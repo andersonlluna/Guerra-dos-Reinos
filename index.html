@@ -70,39 +70,6 @@
             letter-spacing: 0.03em;
         }
 
-        /* LOADING */
-        .loading-screen {
-            position: fixed;
-            inset: 0;
-            background: var(--bg-deep);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            gap: 20px;
-        }
-        .loading-icon { font-size: 4em; animation: pulse 1.2s ease-in-out infinite; }
-        .loading-text { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.1em; letter-spacing: 0.1em; }
-        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.9)} }
-
-        .error-screen {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: var(--bg-deep);
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            gap: 16px;
-            padding: 24px;
-            text-align: center;
-        }
-        .error-icon { font-size: 3em; }
-        .error-title { font-family: 'Cinzel', serif; color: #e74c3c; font-size: 1.2em; }
-        .error-msg { color: var(--text-muted); font-size: 0.95em; line-height: 1.6; }
-
         /* CONTENT */
         .content { padding: 16px 14px; max-width: 640px; margin: 0 auto; }
 
@@ -452,7 +419,7 @@
             margin: 20px 0;
         }
 
-        /* PROG BAR */
+        /* PROGR BAR */
         .prog-label { font-size: 0.85em; color: var(--text-muted); margin-bottom: 4px; display: flex; justify-content: space-between; }
         .prog-bar-bg { background: rgba(255,255,255,0.07); border-radius: 4px; height: 8px; margin-bottom: 10px; overflow: hidden; }
         .prog-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light)); }
@@ -461,26 +428,87 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0d0d1a; }
         ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 4px; }
+
+        /* ── ALLIANCE TAB ── */
+        .al-scoreboard {
+            background: rgba(218,165,32,0.07); border: 2px solid rgba(218,165,32,0.25);
+            border-radius: 14px; padding: 18px 16px; margin-bottom: 20px;
+        }
+        .al-scoreboard-title {
+            font-family: 'Cinzel', serif; font-size: 0.82em; color: var(--text-muted);
+            letter-spacing: 0.1em; text-transform: uppercase; text-align: center; margin-bottom: 14px;
+        }
+        .al-score-row { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+        .al-score-side { flex: 1; text-align: center; }
+        .al-score-pts { font-family: 'Cinzel', serif; font-size: 2.2em; font-weight: 900; line-height: 1; }
+        .al-score-label { font-size: 0.88em; font-style: italic; margin-top: 4px; }
+        .al-score-winner {
+            display: inline-block; margin-top: 6px; font-family: 'Cinzel', serif;
+            font-size: 0.72em; padding: 2px 10px; border-radius: 20px; font-weight: 700;
+        }
+        .al-score-vs {
+            font-family: 'Cinzel', serif; font-size: 1.5em; font-weight: 900;
+            color: var(--gold); text-shadow: 0 0 10px rgba(255,215,0,0.3); flex-shrink: 0;
+        }
+        .al-stat-row {
+            display: flex; align-items: center; gap: 8px;
+            padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .al-stat-row:last-child { border-bottom: none; }
+        .al-stat-val { flex: 1; text-align: center; font-family: 'Cinzel', serif; font-size: 1.2em; font-weight: 900; }
+        .al-stat-label {
+            font-family: 'Cinzel', serif; font-size: 0.72em; color: var(--text-muted);
+            text-align: center; min-width: 90px; letter-spacing: 0.06em; text-transform: uppercase;
+        }
+        .al-block { margin-bottom: 24px; }
+        .al-header-card {
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px 16px; border-radius: 12px; margin-bottom: 10px;
+        }
+        .al-header-card.bastardos {
+            background: linear-gradient(135deg, rgba(80,80,100,0.2), rgba(80,80,100,0.05));
+            border: 2px solid rgba(176,190,197,0.3);
+        }
+        .al-header-card.anel {
+            background: linear-gradient(135deg, rgba(41,128,185,0.2), rgba(41,128,185,0.05));
+            border: 2px solid rgba(41,128,185,0.4);
+        }
+        .al-header-icon { font-size: 2.4em; flex-shrink: 0; }
+        .al-header-info { flex: 1; }
+        .al-header-name { font-family: 'Cinzel', serif; font-size: 1.1em; font-weight: 900; letter-spacing: 0.04em; }
+        .al-header-name.bastardos { color: #B0BEC5; }
+        .al-header-name.anel      { color: #74b9ff; }
+        .al-header-sub { font-size: 0.8em; color: var(--text-muted); font-style: italic; margin-top: 2px; }
+        .al-header-total { text-align: right; }
+        .al-header-pts { font-family: 'Cinzel', serif; font-size: 1.8em; font-weight: 900; }
+        .al-header-pts.bastardos { color: #B0BEC5; }
+        .al-header-pts.anel      { color: #74b9ff; }
+        .al-header-avg { font-size: 0.75em; color: var(--text-muted); font-style: italic; margin-top: 2px; }
+        .al-member-row {
+            display: flex; align-items: center; gap: 10px;
+            padding: 11px 13px; border-radius: 10px; margin-bottom: 7px; border: 1px solid;
+        }
+        .al-member-row.bastardos { border-color: rgba(176,190,197,0.25); background: rgba(80,80,100,0.05); }
+        .al-member-row.anel      { border-color: rgba(41,128,185,0.3);   background: rgba(41,128,185,0.05); }
+        .al-member-avatar { font-size: 1.9em; flex-shrink: 0; }
+        .al-member-info { flex: 1; }
+        .al-member-name { font-family: 'Cinzel', serif; font-size: 0.95em; font-weight: 700; color: var(--gold-light); }
+        .al-member-title { font-size: 0.8em; color: var(--gold); font-style: italic; }
+        .al-member-pts { text-align: right; }
+        .al-member-pts-main { font-family: 'Cinzel', serif; font-size: 1.15em; font-weight: 700; color: var(--gold-light); }
+        .al-member-pts-sub { font-size: 0.75em; color: var(--text-muted); }
+        .al-vs-divider {
+            text-align: center; font-family: 'Cinzel', serif; font-size: 1.2em; font-weight: 900;
+            color: var(--gold); margin: 4px 0 18px; letter-spacing: 0.15em;
+            text-shadow: 0 0 10px rgba(255,215,0,0.3);
+        }
     </style>
 </head>
 <body>
 
-<!-- LOADING -->
-<div class="loading-screen" id="loading">
-    <div class="loading-icon">⚔️</div>
-    <div class="loading-text">Carregando os Reinos...</div>
-</div>
-
-<!-- ERROR -->
-<div class="error-screen" id="error-screen">
-    <div class="error-icon">🏚️</div>
-    <div class="error-title">Erro ao carregar dados</div>
-    <div class="error-msg" id="error-msg">Verifique se o arquivo dados.csv está na mesma pasta que o index.html.</div>
-</div>
-
 <div class="header">
     <div class="header-title">⚔️ Guerra dos Reinos ⚔️</div>
-    <div class="header-sub">Temporada 2026 · Rodada <span id="current-round">—</span> de 38</div>
+    <div class="header-sub">Temporada 2026 · Rodada <span id="current-round">3</span> de 38</div>
 </div>
 
 <div class="content">
@@ -489,6 +517,12 @@
     <div id="tab-ranking" class="tab-content active">
         <div class="section-title">🏆 Classificação Geral</div>
         <div id="ranking-list"></div>
+    </div>
+
+    <!-- TAB: ALIANÇAS -->
+    <div id="tab-aliancas" class="tab-content">
+        <div class="section-title">🤝 Batalha das Alianças</div>
+        <div id="aliancas-content"></div>
     </div>
 
     <!-- TAB: MEDIEVAL -->
@@ -517,7 +551,7 @@
 
     <div class="footer">
         <div class="footer-quote">"A glória não se mede apenas em pontos, mas em conquistas eternas!"</div>
-        <div class="footer-info">Sistema de Conquistas Medievais v3.2 · <span id="last-updated"></span></div>
+        <div class="footer-info">Sistema de Conquistas Medievais v3.2 · Fevereiro 2026</div>
     </div>
 </div>
 
@@ -525,6 +559,9 @@
 <div class="bottom-nav">
     <button class="nav-btn active" onclick="switchTab('ranking', this)" aria-label="Ranking">
         <div class="nav-icon">🏆</div><div>Ranking</div>
+    </button>
+    <button class="nav-btn" onclick="switchTab('aliancas', this)" aria-label="Alianças">
+        <div class="nav-icon">🤝</div><div>Alianças</div>
     </button>
     <button class="nav-btn" onclick="switchTab('medieval', this)" aria-label="Medieval">
         <div class="nav-icon">⚔️</div><div>Medieval</div>
@@ -543,66 +580,85 @@
 <script>
 
 // ═══════════════════════════════════════════════
-// CONFIGURAÇÃO DOS TIMES — edite aqui se necessário
+// DADOS DOS TIMES
 // ═══════════════════════════════════════════════
 const LORDS = [
-    { name: 'Icebergteam',    house: 'Forja Polar',          avatar: '❄️',  color: '#00CED1' },
-    { name: 'Sons of Númenor',house: 'Herdeiros de Elendil',  avatar: '🛡️',  color: '#4169E1' },
-    { name: 'Ironverdict',    house: 'Forja da Justiça',      avatar: '🗡️',  color: '#8a8a8a' },
-    { name: 'CEEC',           house: 'Mestre das Espadas',    avatar: '⚔️',  color: '#8B0000' },
-    { name: 'Otopatamá',      house: 'Samurais Guerreiros',   avatar: '🤖',  color: '#1E90FF' },
-    { name: 'Andorinha Jr',   house: 'Jovem Veloz',           avatar: '🐦',  color: '#FF6347' },
-    { name: 'Andorinha',      house: 'Senhores do Voo',       avatar: '🦅',  color: '#DC143C' },
-    { name: 'Varelitas',      house: 'Guardas da Colina',     avatar: '🦊',  color: '#228B22' },
-    { name: 'Lobonegro',      house: 'Agente do Caos',        avatar: '🐺',  color: '#7a5af0' },
+    { id: 1,  name: 'Icebergteam',    house: 'Forja Polar',         avatar: '❄️',  color: '#00CED1', alliance: 'anel'      },
+    { id: 2,  name: 'Sons of Númenor',house: 'Herdeiros de Elendil', avatar: '🛡️',  color: '#4169E1', alliance: 'bastardos' },
+    { id: 3,  name: 'Ironverdict',    house: 'Forja da Justiça',    avatar: '🗡️',  color: '#8a8a8a', alliance: 'bastardos' },
+    { id: 4,  name: 'CEEC',           house: 'Mestre das Espadas',  avatar: '⚔️',  color: '#8B0000', alliance: 'anel'      },
+    { id: 5,  name: 'Otopatamá',      house: 'Samurais Guerreiros', avatar: '🤖',  color: '#1E90FF', alliance: 'anel'      },
+    { id: 6,  name: 'Andorinha Jr',   house: 'Jovem Veloz',         avatar: '🐦',  color: '#FF6347', alliance: 'anel'      },
+    { id: 7,  name: 'Andorinha',      house: 'Senhores do Voo',     avatar: '🦅',  color: '#DC143C', alliance: 'anel'      },
+    { id: 8,  name: 'Varelitas',      house: 'Guardas da Colina',   avatar: '🦊',  color: '#228B22', alliance: 'bastardos' },
+    { id: 9,  name: 'Lobonegro',      house: 'Agente do Caos',      avatar: '🐺',  color: '#7a5af0', alliance: 'bastardos' },
 ];
 
+const ALLIANCES = {
+    bastardos: { label: 'Os Bastardos',      icon: '🗡️', members: 'Varelitas · Lobonegro · Sons of Númenor · Ironverdict' },
+    anel:      { label: 'Sociedade do Anel', icon: '💍', members: 'Icebergteam · CEEC · Otopatamá · Andorinha Jr · Andorinha' },
+};
+
 // ═══════════════════════════════════════════════
-// NOMES DAS 38 BATALHAS
+// DADOS DAS BATALHAS
 // ═══════════════════════════════════════════════
 const BATTLE_NAMES = [
-    'Cerco do Abismo de Ferro',
-    'Massacre da Festa Escarlate',
-    'Batalha do Portão Sombrio',
-    'Confronto no Tridente das Três Garfos',
-    'Queda da Torre Cinza',
-    'Carnificina nos Campos do Fogo Verde',
-    'Cerco da Cidade das Torres Brancas',
-    'Batalha das Águas Negras em Chamas',
-    'Assalto ao Vale das Sombras',
-    'Duelo nas Minas da Montanha',
-    'Massacre do Casamento Sangrento',
-    'Batalha dos Bastardos do Norte',
-    'Cerco do Ninho da Lua',
-    'Confronto na Forja Flamejante',
-    'A Longa Noite dos Mortos',
-    'Queda do Rochedo de Ouro',
-    'Batalha da Baía do Rei Escravo',
-    'Carnificina no Bosque dos Lobos',
-    'Cerco da Muralha Eterna',
-    'Massacre nos Degraus de Pedra',
-    'Batalha do Forte da Tormenta',
-    'Dança Sangrenta dos Dragões',
-    'Queda das Torres Gêmeas do Rio',
-    'Cerco do Porto Branco do Norte',
-    'Confronto no Jardim das Rosas Mortas',
-    'Massacre do Vau Rubi',
-    'Batalha da Lagoa dos Deuses',
-    'Assalto à Ponta do Dragão',
-    'Carnificina no Campo Queimado',
-    'Cerco do Portão Dourado',
-    'Batalha do Inverno Eterno',
-    'Queda da Coroa de Espinhos',
-    'Massacre na Cidadela do Sol',
-    'Confronto nas Terras do Crepúsculo',
-    'Cerco da Fortaleza do Rei da Noite',
-    'Batalha dos Sete Reinos Unidos',
-    'A Grande Guerra do Amanhecer',
+    'Cerco do Abismo de Ferro','Massacre da Festa Escarlate','Batalha do Portão Sombrio',
+    'Confronto no Tridente das Três Garfos','Queda da Torre Cinza',
+    'Carnificina nos Campos do Fogo Verde','Cerco da Cidade das Torres Brancas',
+    'Batalha das Águas Negras em Chamas','Assalto ao Vale das Sombras',
+    'Duelo nas Minas da Montanha','Massacre do Casamento Sangrento',
+    'Batalha dos Bastardos do Norte','Cerco do Ninho da Lua',
+    'Confronto na Forja Flamejante','A Longa Noite dos Mortos',
+    'Queda do Rochedo de Ouro','Batalha da Baía do Rei Escravo',
+    'Carnificina no Bosque dos Lobos','Cerco da Muralha Eterna',
+    'Massacre nos Degraus de Pedra','Batalha do Forte da Tormenta',
+    'Dança Sangrenta dos Dragões','Queda das Torres Gêmeas do Rio',
+    'Cerco do Porto Branco do Norte','Confronto no Jardim das Rosas Mortas',
+    'Massacre do Vau Rubi','Batalha da Lagoa dos Deuses',
+    'Assalto à Ponta do Dragão','Carnificina no Campo Queimado',
+    'Cerco do Portão Dourado','Batalha do Inverno Eterno',
+    'Queda da Coroa de Espinhos','Massacre na Cidadela do Sol',
+    'Confronto nas Terras do Crepúsculo','Cerco da Fortaleza do Rei da Noite',
+    'Batalha dos Sete Reinos Unidos','A Grande Guerra do Amanhecer',
     'RAGNARÖK: O FIM DE TODAS AS ERAS',
 ];
 
+// BATTLES is built dynamically from dados.csv
+let BATTLES = [];
+
+function parseCSV(text) {
+    const rows = [];
+    const lines = text.trim().split('\n');
+    for (let i = 1; i < lines.length; i++) {
+        const parts = lines[i].trim().split(',');
+        if (parts.length < 3) continue;
+        const rodada = parseInt(parts[0].trim());
+        const name   = parts[1].trim();
+        const pontos = parseFloat(parts[2].trim());
+        if (!isNaN(rodada) && name && !isNaN(pontos)) rows.push({ rodada, name, pontos });
+    }
+    return rows;
+}
+
+function buildBattles(rows) {
+    const map = {};
+    rows.forEach(r => {
+        if (!map[r.rodada]) map[r.rodada] = [];
+        // Match CSV name to LORDS by name
+        const lord = LORDS.find(l => l.name.toLowerCase().trim() === r.name.toLowerCase().trim());
+        if (lord) map[r.rodada].push({ lordId: lord.id, points: r.pontos });
+    });
+    return Object.keys(map).map(Number).sort((a,b)=>a-b).map(week => ({
+        week,
+        name: BATTLE_NAMES[week-1] || `Batalha ${week}`,
+        results: map[week],
+    }));
+}
+
+
 // ═══════════════════════════════════════════════
-// TÍTULOS v3.2
+// TÍTULOS
 // ═══════════════════════════════════════════════
 const TITLES = {
     mvp: [
@@ -617,7 +673,7 @@ const TITLES = {
         { min: 10, title: '⚡ Portador da Espada de Fogo' },
         { min: 7,  title: '💎 Portador da Garra Longa' },
         { min: 5,  title: '🌟 Cavaleiro do Amanhecer' },
-        { min: 3,  title: '⚔️ Empunhador de Andúril' },
+        { min: 3,  title: '⚔️ Empunhador de Anduril' },
         { min: 1,  title: '🔥 Portador da Ferroada' },
     ],
     recuperacao: [
@@ -657,52 +713,13 @@ function getTitle(type, count) {
 }
 
 // ═══════════════════════════════════════════════
-// LEITURA DO CSV
-// ═══════════════════════════════════════════════
-function parseCSV(text) {
-    const lines = text.trim().split('\n');
-    const rows = [];
-    // Skip header
-    for (let i = 1; i < lines.length; i++) {
-        const line = lines[i].trim();
-        if (!line) continue;
-        const parts = line.split(',');
-        if (parts.length < 3) continue;
-        const rodada = parseInt(parts[0].trim());
-        const time = parts[1].trim();
-        const pontos = parseFloat(parts[2].trim());
-        if (!isNaN(rodada) && time && !isNaN(pontos)) {
-            rows.push({ rodada, time, pontos });
-        }
-    }
-    return rows;
-}
-
-function buildBattles(rows) {
-    // Group by round
-    const rounds = {};
-    rows.forEach(r => {
-        if (!rounds[r.rodada]) rounds[r.rodada] = [];
-        rounds[r.rodada].push({ name: r.time, points: r.pontos });
-    });
-
-    return Object.keys(rounds)
-        .map(Number)
-        .sort((a, b) => a - b)
-        .map(week => ({
-            week,
-            name: BATTLE_NAMES[week - 1] || `Batalha ${week}`,
-            results: rounds[week],
-        }));
-}
-
-// ═══════════════════════════════════════════════
-// PONTOS MEDIEVAIS
+// CÁLCULO DE PONTOS MEDIEVAIS
 // ═══════════════════════════════════════════════
 function calcMedievalPoints(ach) {
     let pts = 0;
     const { mvp=0, podio=0, mitada=0, recuperacao=0, massacre=0, lanterna=0 } = ach;
 
+    // MVP progressivo
     if      (mvp >= 15) pts += 200;
     else if (mvp >= 10) pts += 135;
     else if (mvp >= 7)  pts += 95;
@@ -710,28 +727,33 @@ function calcMedievalPoints(ach) {
     else if (mvp >= 3)  pts += 40;
     else                pts += mvp * 10;
 
+    // Pódio progressivo
     if      (podio >= 15) pts += 75;
     else if (podio >= 10) pts += 45;
     else if (podio >= 8)  pts += 34;
     else if (podio >= 5)  pts += 20;
     else                  pts += podio * 3;
 
+    // Mitada progressivo (80, 90, 100, 110 somam no mesmo contador)
     if      (mitada >= 10) pts += 100;
     else if (mitada >= 7)  pts += 70;
     else if (mitada >= 5)  pts += 45;
     else if (mitada >= 3)  pts += 23;
     else                   pts += mitada * 5;
 
+    // Recuperação progressivo
     if      (recuperacao >= 7) pts += 96;
     else if (recuperacao >= 5) pts += 65;
     else if (recuperacao >= 3) pts += 36;
     else                       pts += recuperacao * 8;
 
+    // Massacre progressivo
     if      (massacre >= 7) pts += 62;
     else if (massacre >= 5) pts += 40;
     else if (massacre >= 3) pts += 22;
     else                    pts += massacre * 6;
 
+    // Lanterna penalidade progressiva
     if      (lanterna >= 10) pts -= 100;
     else if (lanterna >= 7)  pts -= 70;
     else if (lanterna >= 5)  pts -= 45;
@@ -742,10 +764,12 @@ function calcMedievalPoints(ach) {
 }
 
 // ═══════════════════════════════════════════════
-// PROCESSAMENTO PRINCIPAL
+// PROCESSAR CONQUISTAS
 // ═══════════════════════════════════════════════
-function processAll(BATTLES) {
-    // Initialize lords data from LORDS config
+function processAll() {
+    const acumulado = {};
+    LORDS.forEach(l => acumulado[l.id] = 0);
+
     const lordsData = LORDS.map(lord => ({
         ...lord,
         cartolaPoints: 0,
@@ -753,78 +777,66 @@ function processAll(BATTLES) {
         recuperacao: 0, massacre: 0, lanterna: 0,
         medievalPoints: 0, totalPoints: 0,
         currentTitle: '📰 Escudeiro Sem Nome',
+        // bônus G2 por rodada (não progressivo)
         bonusG2: 0,
     }));
-
-    const getLord = (name) => lordsData.find(l =>
-        l.name.toLowerCase().trim() === name.toLowerCase().trim()
-    );
-
-    const acumulado = {};
-    LORDS.forEach(l => acumulado[l.name] = 0);
 
     let prevPoints = {};
 
     BATTLES.forEach((battle, idx) => {
-        const sorted = [...battle.results].sort((a, b) => b.points - a.points);
+        const sorted = [...battle.results].sort((a,b) => b.points - a.points);
+        const acumAntes = {...acumulado};
 
-        // Update cumulative before this round
-        const acumAntes = { ...acumulado };
-        battle.results.forEach(r => { acumulado[r.name] = (acumulado[r.name] || 0) + r.points; });
-        const acumDepois = { ...acumulado };
+        // Atualizar acumulado
+        battle.results.forEach(r => { acumulado[r.lordId] += r.points; });
+        const acumDepois = {...acumulado};
 
-        // Ranking before and after
-        const rankAntes  = Object.entries(acumAntes).sort((a,b) => b[1]-a[1]).map(e => e[0]);
-        const rankDepois = Object.entries(acumDepois).sort((a,b) => b[1]-a[1]).map(e => e[0]);
+        // Ranking antes e depois
+        const rankAntes  = Object.entries(acumAntes).sort((a,b)  => b[1]-a[1]).map(e=>+e[0]);
+        const rankDepois = Object.entries(acumDepois).sort((a,b) => b[1]-a[1]).map(e=>+e[0]);
         const posAntes   = {};
         const posDepois  = {};
-        rankAntes.forEach((name, i)  => posAntes[name]  = i);
-        rankDepois.forEach((name, i) => posDepois[name] = i);
+        rankAntes.forEach((id,i)  => posAntes[id]  = i);
+        rankDepois.forEach((id,i) => posDepois[id] = i);
 
         sorted.forEach((result, position) => {
-            const ld = getLord(result.name);
-            if (!ld) return;
-
+            const ld = lordsData.find(l => l.id === result.lordId);
             ld.cartolaPoints += result.points;
 
             // MVP
             if (position === 0 && result.points > 0) ld.mvp++;
 
-            // Pódio (2º ou 3º)
+            // Pódio (2º ou 3º, MVP não acumula)
             if (position === 1 || position === 2) ld.podio++;
 
-            // Mitada G1 (≥80)
+            // Mitada G1 (≥80 pts, base do contador)
             if (result.points >= 80) ld.mitada++;
 
             // Bônus G2 por rodada
-            if      (result.points >= 110) ld.bonusG2 += 14;
+            if (result.points >= 110)      ld.bonusG2 += 14;
             else if (result.points >= 100) ld.bonusG2 += 8;
             else if (result.points >= 90)  ld.bonusG2 += 4;
 
             // Lanterna
             if (position === sorted.length - 1 && result.points > 0) ld.lanterna++;
 
-            // Recuperação (+50 pts vs rodada anterior)
-            if (idx > 0 && prevPoints[result.name] !== undefined && prevPoints[result.name] > 0) {
-                const diff = result.points - prevPoints[result.name];
+            // Recuperação
+            if (idx > 0 && prevPoints[result.lordId] > 0) {
+                const diff = result.points - prevPoints[result.lordId];
                 if (diff >= 50) ld.recuperacao++;
             }
 
-            // Massacre (ultrapassou alguém com 10+ pts de vantagem no acumulado)
+            // Massacre
             if (idx > 0) {
-                const name = result.name;
-                const subiu = (posAntes[name] || 0) - (posDepois[name] || 0) > 0;
+                const myId = result.lordId;
+                const subiu = posAntes[myId] - posDepois[myId] > 0;
                 if (subiu) {
                     let temMassacre = false;
                     LORDS.forEach(outro => {
-                        if (outro.name === name) return;
-                        const anteriorMeu   = posAntes[name]  ?? 999;
-                        const anteriorOutro = posAntes[outro.name] ?? 999;
-                        const depoisMeu     = posDepois[name] ?? 999;
-                        const depoisOutro   = posDepois[outro.name] ?? 999;
-                        const ultrapassou = anteriorMeu > anteriorOutro && depoisMeu < depoisOutro;
+                        if (outro.id === myId) return;
+                        const ultrapassou = posAntes[myId] > posAntes[outro.id] && posDepois[myId] < posDepois[outro.id];
                         if (ultrapassou) {
-                            const diff = (acumDepois[name] || 0) - (acumDepois[outro.name] || 0);
+                            const diff = acumDepois[myId] - acumDepois[outro.id];
                             if (diff >= 10) temMassacre = true;
                         }
                     });
@@ -833,16 +845,17 @@ function processAll(BATTLES) {
             }
         });
 
-        // Save points for next round's Recuperação check
-        battle.results.forEach(r => { prevPoints[r.name] = r.points; });
+        // Salvar pontos desta rodada para próxima
+        battle.results.forEach(r => { prevPoints[r.lordId] = r.points; });
     });
 
-    // Calculate medieval points and titles
+    // Calcular pontos medievais e títulos
     lordsData.forEach(ld => {
         const ach = { mvp: ld.mvp, podio: ld.podio, mitada: ld.mitada, recuperacao: ld.recuperacao, massacre: ld.massacre, lanterna: ld.lanterna };
         ld.medievalPoints = calcMedievalPoints(ach) + ld.bonusG2;
-        ld.totalPoints    = ld.cartolaPoints + ld.medievalPoints;
+        ld.totalPoints = ld.cartolaPoints + ld.medievalPoints;
 
+        // Título principal (ordem de prioridade)
         ld.currentTitle =
             getTitle('mvp', ld.mvp) ||
             getTitle('mitada', ld.mitada) ||
@@ -853,20 +866,23 @@ function processAll(BATTLES) {
             '📰 Escudeiro Sem Nome';
     });
 
-    return lordsData.sort((a, b) => b.totalPoints - a.totalPoints);
+    return lordsData.sort((a,b) => b.totalPoints - a.totalPoints);
 }
 
 // ═══════════════════════════════════════════════
 // RENDER RANKING
 // ═══════════════════════════════════════════════
-function renderRanking(data) {
+function renderRanking() {
+    const data = processAll();
     const el = document.getElementById('ranking-list');
+
     el.innerHTML = data.map((lord, i) => {
         const posClass = i===0?'pos-1':i===1?'pos-2':i===2?'pos-3':'pos-n';
         const medClass = lord.medievalPoints >= 0 ? 'pts-medieval-pos' : 'pts-medieval-neg';
         const medSign  = lord.medievalPoints >= 0 ? '+' : '';
+
         return `
-        <div class="lord-card expandable" style="border-color:${lord.color}" onclick="toggleDetails('r${i}')">
+        <div class="lord-card expandable" style="border-color:${lord.color}" onclick="toggleDetails(${lord.id})">
             ${i===0 ? '<div class="crown-icon">👑</div>' : ''}
             <div class="lord-header">
                 <div class="position-badge ${posClass}">${i+1}</div>
@@ -884,17 +900,17 @@ function renderRanking(data) {
                     <span class="${medClass}">⚔️ ${medSign}${lord.medievalPoints}</span>
                 </div>
             </div>
-            <div class="lord-details" id="details-r${i}">
+            <div class="lord-details" id="details-${lord.id}">
                 <div class="stats-grid">
                     <div class="stat-item"><div class="stat-label">🏆 MVP</div><div class="stat-value">${lord.mvp}x</div></div>
                     <div class="stat-item"><div class="stat-label">💀 Mitada</div><div class="stat-value">${lord.mitada}x</div></div>
                     <div class="stat-item"><div class="stat-label">🥇 Pódio</div><div class="stat-value">${lord.podio}x</div></div>
                     <div class="stat-item"><div class="stat-label">📈 Recup.</div><div class="stat-value">${lord.recuperacao}x</div></div>
                     <div class="stat-item"><div class="stat-label">🗡️ Massacre</div><div class="stat-value">${lord.massacre}x</div></div>
-                    <div class="stat-item"><div class="stat-label">📦 Lanterna</div><div class="stat-value negative">${lord.lanterna}x</div></div>
+                    <div class="stat-item"><div class="stat-label">🔦 Lanterna</div><div class="stat-value negative">${lord.lanterna}x</div></div>
                 </div>
             </div>
-            <div class="expand-btn" id="indicator-r${i}">▼ Toque para ver detalhes</div>
+            <div class="expand-btn" id="indicator-${lord.id}">▼ Toque para ver detalhes</div>
         </div>`;
     }).join('');
 }
@@ -902,12 +918,15 @@ function renderRanking(data) {
 // ═══════════════════════════════════════════════
 // RENDER MEDIEVAL
 // ═══════════════════════════════════════════════
-function renderMedieval(data) {
-    const el = document.getElementById('medieval-list');
+function renderMedieval() {
+    const data = processAll();
     const sorted = [...data].sort((a,b) => b.medievalPoints - a.medievalPoints);
+    const el = document.getElementById('medieval-list');
+
     el.innerHTML = sorted.map(lord => {
         const medColor = lord.medievalPoints >= 0 ? '#4CAF50' : '#e74c3c';
         const medSign  = lord.medievalPoints >= 0 ? '+' : '';
+
         return `
         <div class="lord-card" style="border-color:${lord.color}">
             <div class="lord-header">
@@ -928,7 +947,7 @@ function renderMedieval(data) {
                 <div class="stat-item"><div class="stat-label">🥇 Pódio</div><div class="stat-value">${lord.podio}x</div></div>
                 <div class="stat-item"><div class="stat-label">📈 Recup.</div><div class="stat-value">${lord.recuperacao}x</div></div>
                 <div class="stat-item"><div class="stat-label">🗡️ Massacre</div><div class="stat-value">${lord.massacre}x</div></div>
-                <div class="stat-item"><div class="stat-label">📦 Lanterna</div><div class="stat-value negative">${lord.lanterna}x</div></div>
+                <div class="stat-item"><div class="stat-label">🔦 Lanterna</div><div class="stat-value negative">${lord.lanterna}x</div></div>
             </div>
         </div>`;
     }).join('');
@@ -937,34 +956,38 @@ function renderMedieval(data) {
 // ═══════════════════════════════════════════════
 // RENDER BATALHAS
 // ═══════════════════════════════════════════════
-function renderBattles(BATTLES, data) {
+function renderBattles() {
+    const data = processAll();
     const el = document.getElementById('battles-list');
-    el.innerHTML = [...BATTLES].reverse().map(battle => {
+
+    el.innerHTML = BATTLES.map(battle => {
         const sorted = [...battle.results].sort((a,b) => b.points - a.points);
-        const winner = data.find(l => l.name.toLowerCase() === sorted[0].name.toLowerCase()) || { name: sorted[0].name, avatar: '🏆' };
+        const winner = data.find(l => l.id === sorted[0].lordId);
+
         return `
         <div class="battle-card" onclick="toggleBattle(${battle.week})">
             <div class="battle-round">Rodada ${battle.week}</div>
             <div class="battle-name">${battle.name}</div>
-            <div class="battle-winner">🏆 ${winner.avatar} ${winner.name}</div>
+            <div class="battle-winner">🏆 ${winner.name}</div>
             <div class="expand-btn" id="battle-ind-${battle.week}">▼ Ver resultados</div>
             <div class="battle-results" id="battle-res-${battle.week}">
                 ${sorted.map((r, idx) => {
-                    const lord = data.find(l => l.name.toLowerCase() === r.name.toLowerCase()) || { color: '#666', avatar: '⚔️', name: r.name };
+                    const lord = data.find(l => l.id === r.lordId);
                     const badges = [];
-                    if (idx === 0) badges.push('🏆');
+                    if (idx === 0 && r.points > 0) badges.push('🏆');
                     if (r.points >= 110) badges.push('🔥+110');
                     else if (r.points >= 100) badges.push('💥+100');
                     else if (r.points >= 90)  badges.push('⚡+90');
                     else if (r.points >= 80)  badges.push('💀+80');
-                    if (idx < 3 && idx > 0) badges.push('🥇');
-                    if (idx === sorted.length - 1) badges.push('📦');
+                    if (idx < 3) badges.push('🥇');
+                    if (idx === sorted.length - 1 && r.points > 0) badges.push('🔦');
+
                     return `
                     <div class="result-row" style="border-color:${lord.color};background:${idx===0?'rgba(218,165,32,0.1)':'rgba(255,255,255,0.03)'}">
                         <div class="result-left">
                             <div class="result-avatar">${lord.avatar}</div>
                             <div>
-                                <div class="result-name">${r.name}</div>
+                                <div class="result-name">${lord.name}</div>
                                 ${badges.length ? `<div class="result-badges">${badges.join(' ')}</div>` : ''}
                             </div>
                         </div>
@@ -979,12 +1002,14 @@ function renderBattles(BATTLES, data) {
 // ═══════════════════════════════════════════════
 // RENDER ACHIEVEMENTS
 // ═══════════════════════════════════════════════
-function renderAchievements(data) {
+function renderAchievements() {
+    const data = processAll();
     const el = document.getElementById('achievements-list');
-    const mvpKing = [...data].sort((a,b) => b.mvp-a.mvp)[0];
-    const mitKing = [...data].sort((a,b) => b.mitada-a.mitada)[0];
-    const recKing = [...data].sort((a,b) => b.recuperacao-a.recuperacao)[0];
-    const masKing = [...data].sort((a,b) => b.massacre-a.massacre)[0];
+
+    const mvpKing   = [...data].sort((a,b) => b.mvp-a.mvp)[0];
+    const mitKing   = [...data].sort((a,b) => b.mitada-a.mitada)[0];
+    const recKing   = [...data].sort((a,b) => b.recuperacao-a.recuperacao)[0];
+    const masKing   = [...data].sort((a,b) => b.massacre-a.massacre)[0];
 
     let html = '<div style="margin-bottom:20px;text-align:center;font-family:Cinzel,serif;color:var(--gold);font-size:1.05em;letter-spacing:0.05em;">⭐ DESTAQUES DA TEMPORADA ⭐</div>';
 
@@ -1041,7 +1066,7 @@ function renderAchievements(data) {
                 ${lord.recuperacao>0?`<div class="stat-item" style="background:rgba(52,152,219,0.08)"><div class="stat-label">📈 Recup.</div><div class="stat-value">${lord.recuperacao}x</div><div style="font-size:0.78em;color:#3498db;margin-top:3px">${getTitle('recuperacao',lord.recuperacao)}</div></div>`:''}
                 ${lord.massacre>0?`<div class="stat-item" style="background:rgba(155,89,182,0.08)"><div class="stat-label">🗡️ Massacre</div><div class="stat-value">${lord.massacre}x</div><div style="font-size:0.78em;color:#9b59b6;margin-top:3px">${getTitle('massacre',lord.massacre)}</div></div>`:''}
                 ${lord.podio>0?`<div class="stat-item"><div class="stat-label">🥇 Pódio</div><div class="stat-value">${lord.podio}x</div></div>`:''}
-                ${lord.lanterna>0?`<div class="stat-item"><div class="stat-label">📦 Lanterna</div><div class="stat-value negative">${lord.lanterna}x</div></div>`:''}
+                ${lord.lanterna>0?`<div class="stat-item"><div class="stat-label">🔦 Lanterna</div><div class="stat-value negative">${lord.lanterna}x</div></div>`:''}
             </div>
         </div>`).join('');
 
@@ -1063,7 +1088,7 @@ function renderRules() {
             <tr><td>💀 Mitada</td><td>≥ 80 pts na rodada</td><td class="pts-pos">+5</td></tr>
             <tr><td>📈 Recuperação</td><td>+50 pts vs rodada anterior</td><td class="pts-pos">+8</td></tr>
             <tr><td>🗡️ Massacre</td><td>Ultrapassa c/ 10+ pts no acumulado</td><td class="pts-pos">+6</td></tr>
-            <tr><td>📦 Lanterna</td><td>Último lugar na rodada</td><td class="pts-neg">−5</td></tr>
+            <tr><td>🔦 Lanterna</td><td>Último lugar na rodada</td><td class="pts-neg">−5</td></tr>
         </table>
         <div class="rule-note">MVP e Pódio são excludentes. Quem vence a rodada recebe apenas os +10 do MVP.</div>
     </div>
@@ -1090,67 +1115,87 @@ function renderRules() {
         </table>
         <table class="rules-table">
             <tr><th>Prêmio Especial</th><th>Condição</th><th>Bônus</th></tr>
-            <tr><td>🏛️ Rei de Gondor</td><td>1º sem nunca ser Lanterna</td><td class="pts-pos">+50</td></tr>
+            <tr><td>👑 Campeão Invicto</td><td>1º sem nunca ser Lanterna</td><td class="pts-pos">+50</td></tr>
             <tr><td>🐉 A Virada dos Dragões</td><td>Campeão vindo do 6º ou abaixo</td><td class="pts-pos">+40</td></tr>
-            <tr><td>🔥 Domador de Balerion</td><td>Mais MVPs na temporada</td><td class="pts-pos">+35</td></tr>
-            <tr><td>💫 Perfeição Encarnada</td><td>Maior média Cartola</td><td class="pts-pos">+30</td></tr>
+            <tr><td>🏆 Rei das Vitórias</td><td>Mais MVPs na temporada</td><td class="pts-pos">+35</td></tr>
+            <tr><td>🎯 Perfeição Encarnada</td><td>Maior média Cartola</td><td class="pts-pos">+30</td></tr>
         </table>
     </div>
 
     <div class="rules-section">
-        <div class="rules-group-title">📈 Bônus Progressivos — MVP</div>
-        <table class="rules-table">
-            <tr><th>Acumulado</th><th>Pts Totais</th><th>Título</th></tr>
-            <tr><td>1x</td><td class="pts-pos">10</td><td>⚔️ Cavaleiro da Companhia</td></tr>
-            <tr><td>3x</td><td class="pts-pos">40</td><td>🛡️ Senhor dos Cavaleiros de Rohan</td></tr>
-            <tr><td>5x</td><td class="pts-pos">65</td><td>👑 Herdeiro de Isildur</td></tr>
-            <tr><td>7x</td><td class="pts-pos">95</td><td>⚜️ Rei Coroado de Gondor</td></tr>
-            <tr><td>10x</td><td class="pts-pos">135</td><td>🐉 O Rei que Voltou</td></tr>
-            <tr><td>15x</td><td class="pts-pos">200</td><td>⚡ Portador de Glamdring</td></tr>
-        </table>
-        <div class="rules-group-title">🥇 Bônus Progressivos — Pódio</div>
-        <table class="rules-table">
-            <tr><th>Acumulado</th><th>Pts Totais</th><th>Título</th></tr>
-            <tr><td>1x</td><td class="pts-pos">3</td><td>🎯 Guardião da Torre Branca</td></tr>
-            <tr><td>5x</td><td class="pts-pos">20</td><td>🏅 Cavaleiro da Guarda Real</td></tr>
-            <tr><td>8x</td><td class="pts-pos">34</td><td>💍 Lorde Comandante da Muralha</td></tr>
-            <tr><td>10x</td><td class="pts-pos">45</td><td>🎖️ Mão do Rei</td></tr>
-            <tr><td>15x</td><td class="pts-pos">75</td><td>💫 Protetor dos Sete Reinos</td></tr>
-        </table>
-        <div class="rules-group-title">💀 Bônus Progressivos — Mitada</div>
-        <table class="rules-table">
-            <tr><th>Acumulado</th><th>Pts Totais</th><th>Título</th></tr>
-            <tr><td>1x</td><td class="pts-pos">5</td><td>🔥 Portador da Ferroada</td></tr>
-            <tr><td>3x</td><td class="pts-pos">23</td><td>⚔️ Empunhador de Andúril</td></tr>
-            <tr><td>5x</td><td class="pts-pos">45</td><td>🌟 Cavaleiro do Amanhecer</td></tr>
-            <tr><td>7x</td><td class="pts-pos">70</td><td>💎 Portador da Garra Longa</td></tr>
-            <tr><td>10x</td><td class="pts-pos">100</td><td>⚡ Portador da Espada de Fogo</td></tr>
-        </table>
-        <div class="rules-group-title">📈 Bônus Progressivos — Recuperação</div>
-        <table class="rules-table">
-            <tr><th>Acumulado</th><th>Pts Totais</th><th>Título</th></tr>
-            <tr><td>1x</td><td class="pts-pos">8</td><td>🦅 Cavaleiro do Corvo Branco</td></tr>
-            <tr><td>3x</td><td class="pts-pos">36</td><td>🐉 Renascido no Fogo</td></tr>
-            <tr><td>5x</td><td class="pts-pos">65</td><td>⚡ Jon Snow Ressuscitado</td></tr>
-            <tr><td>7x</td><td class="pts-pos">96</td><td>🌟 Ressurgido das Trevas</td></tr>
-        </table>
-        <div class="rules-group-title">🗡️ Bônus Progressivos — Massacre</div>
-        <table class="rules-table">
-            <tr><th>Acumulado</th><th>Pts Totais</th><th>Título</th></tr>
-            <tr><td>1x</td><td class="pts-pos">6</td><td>🗡️ Conquistador de Terras</td></tr>
-            <tr><td>3x</td><td class="pts-pos">22</td><td>⚔️ O Senhor do Aço Negro</td></tr>
-            <tr><td>5x</td><td class="pts-pos">40</td><td>🔱 Flagelo dos Reinos</td></tr>
-            <tr><td>7x</td><td class="pts-pos">62</td><td>🐉 Terror de Westeros</td></tr>
-        </table>
-        <div class="rules-group-title">📦 Penalidades — Lanterna</div>
-        <table class="rules-table">
-            <tr><th>Acumulado</th><th>Penalidade</th><th>Título</th></tr>
-            <tr><td>1x</td><td class="pts-neg">−5</td><td>🗡️ Banido para o Exílio</td></tr>
-            <tr><td>3x</td><td class="pts-neg">−23</td><td>⚰️ Habitante das Terras Sombrias</td></tr>
-            <tr><td>5x</td><td class="pts-neg">−45</td><td>💀 Servo de Sauron</td></tr>
-            <tr><td>7x</td><td class="pts-neg">−70</td><td>🌑 Prisioneiro de Mordor</td></tr>
-            <tr><td>10x</td><td class="pts-neg">−100</td><td>🕳️ Rei da Noite Eterna</td></tr>
-        </table>
+        <div class="rules-group-title">📈 Bônus Progressivos por Conquista</div>
+        <div class="rule-note">Quanto mais conquistas acumuladas na temporada, maior o bônus total. Ao atingir um novo marco, o valor sobe para o patamar correspondente.</div>
+
+        <div style="margin-bottom:14px">
+            <div style="font-family:Cinzel,serif;font-size:0.95em;color:var(--gold);margin-bottom:8px;letter-spacing:0.03em;">🏆 MVP — teto 200 pts</div>
+            <table class="rules-table">
+                <tr><th>Acumulado</th><th>Pts Totais</th><th>Título</th></tr>
+                <tr><td>1x</td><td class="pts-pos">10</td><td>⚔️ Cavaleiro da Companhia</td></tr>
+                <tr><td>3x</td><td class="pts-pos">40</td><td>🛡️ Senhor dos Cavaleiros de Rohan</td></tr>
+                <tr><td>5x</td><td class="pts-pos">65</td><td>👑 Herdeiro de Isildur</td></tr>
+                <tr><td>7x</td><td class="pts-pos">95</td><td>⚜️ Rei Coroado de Gondor</td></tr>
+                <tr><td>10x</td><td class="pts-pos">135</td><td>🐉 O Rei que Voltou</td></tr>
+                <tr><td>15x</td><td class="pts-pos">200</td><td>⚡ Portador de Glamdring</td></tr>
+            </table>
+        </div>
+
+        <div style="margin-bottom:14px">
+            <div style="font-family:Cinzel,serif;font-size:0.95em;color:var(--gold);margin-bottom:8px;letter-spacing:0.03em;">🥇 Pódio — teto 75 pts</div>
+            <table class="rules-table">
+                <tr><th>Acumulado</th><th>Pts Totais</th><th>Título</th></tr>
+                <tr><td>1x</td><td class="pts-pos">3</td><td>🎯 Guardião da Torre Branca</td></tr>
+                <tr><td>5x</td><td class="pts-pos">20</td><td>🏅 Cavaleiro da Guarda Real</td></tr>
+                <tr><td>8x</td><td class="pts-pos">34</td><td>💍 Lorde Comandante da Muralha</td></tr>
+                <tr><td>10x</td><td class="pts-pos">45</td><td>🎖️ Mão do Rei</td></tr>
+                <tr><td>15x</td><td class="pts-pos">75</td><td>💫 Protetor dos Sete Reinos</td></tr>
+            </table>
+        </div>
+
+        <div style="margin-bottom:14px">
+            <div style="font-family:Cinzel,serif;font-size:0.95em;color:var(--gold);margin-bottom:8px;letter-spacing:0.03em;">💀 Mitada — teto 100 pts <em style="font-weight:400;font-size:0.9em">(G1 + G2 somam no mesmo contador)</em></div>
+            <table class="rules-table">
+                <tr><th>Acumulado</th><th>Pts Totais</th><th>Título</th></tr>
+                <tr><td>1x</td><td class="pts-pos">5</td><td>🔥 Portador da Ferroada</td></tr>
+                <tr><td>3x</td><td class="pts-pos">23</td><td>⚔️ Empunhador de Andúril</td></tr>
+                <tr><td>5x</td><td class="pts-pos">45</td><td>🌟 Cavaleiro do Amanhecer</td></tr>
+                <tr><td>7x</td><td class="pts-pos">70</td><td>💎 Portador da Garra Longa</td></tr>
+                <tr><td>10x</td><td class="pts-pos">100</td><td>⚡ Portador da Espada de Fogo</td></tr>
+            </table>
+        </div>
+
+        <div style="margin-bottom:14px">
+            <div style="font-family:Cinzel,serif;font-size:0.95em;color:var(--gold);margin-bottom:8px;letter-spacing:0.03em;">📈 Recuperação — teto 96 pts</div>
+            <table class="rules-table">
+                <tr><th>Acumulado</th><th>Pts Totais</th><th>Título</th></tr>
+                <tr><td>1x</td><td class="pts-pos">8</td><td>🦅 Cavaleiro do Corvo Branco</td></tr>
+                <tr><td>3x</td><td class="pts-pos">36</td><td>🐉 Renascido no Fogo</td></tr>
+                <tr><td>5x</td><td class="pts-pos">65</td><td>⚡ Jon Snow Ressuscitado</td></tr>
+                <tr><td>7x</td><td class="pts-pos">96</td><td>🌟 Ressurgido das Trevas</td></tr>
+            </table>
+        </div>
+
+        <div style="margin-bottom:14px">
+            <div style="font-family:Cinzel,serif;font-size:0.95em;color:var(--gold);margin-bottom:8px;letter-spacing:0.03em;">🗡️ Massacre — teto 62 pts</div>
+            <table class="rules-table">
+                <tr><th>Acumulado</th><th>Pts Totais</th><th>Título</th></tr>
+                <tr><td>1x</td><td class="pts-pos">6</td><td>🗡️ Conquistador de Terras</td></tr>
+                <tr><td>3x</td><td class="pts-pos">22</td><td>⚔️ O Senhor do Aço Negro</td></tr>
+                <tr><td>5x</td><td class="pts-pos">40</td><td>🔱 Flagelo dos Reinos</td></tr>
+                <tr><td>7x</td><td class="pts-pos">62</td><td>🐉 Terror de Westeros</td></tr>
+            </table>
+        </div>
+
+        <div style="margin-bottom:14px">
+            <div style="font-family:Cinzel,serif;font-size:0.95em;color:#e74c3c;margin-bottom:8px;letter-spacing:0.03em;">🔦 Lanterna — penalidade máxima −100 pts</div>
+            <table class="rules-table">
+                <tr><th>Acumulado</th><th>Penalidade</th><th>Título</th></tr>
+                <tr><td>1x</td><td class="pts-neg">−5</td><td>🗡️ Banido para o Exílio</td></tr>
+                <tr><td>3x</td><td class="pts-neg">−23</td><td>⚰️ Habitante das Terras Sombrias</td></tr>
+                <tr><td>5x</td><td class="pts-neg">−45</td><td>💀 Servo de Sauron</td></tr>
+                <tr><td>7x</td><td class="pts-neg">−70</td><td>🌑 Prisioneiro de Mordor</td></tr>
+                <tr><td>10x</td><td class="pts-neg">−100</td><td>🕳️ Rei da Noite Eterna</td></tr>
+            </table>
+        </div>
     </div>
 
     <div class="rules-section">
@@ -1168,16 +1213,116 @@ function renderRules() {
 // ═══════════════════════════════════════════════
 function toggleDetails(id) {
     const d = document.getElementById(`details-${id}`);
-    const ind = document.getElementById(`indicator-${id}`);
+    const i = document.getElementById(`indicator-${id}`);
     const show = d.classList.toggle('show');
-    ind.textContent = show ? '▲ Toque para recolher' : '▼ Toque para ver detalhes';
+    i.textContent = show ? '▲ Toque para recolher' : '▼ Toque para ver detalhes';
 }
 
 function toggleBattle(week) {
     const r = document.getElementById(`battle-res-${week}`);
-    const ind = document.getElementById(`battle-ind-${week}`);
+    const i = document.getElementById(`battle-ind-${week}`);
     const show = r.classList.toggle('show');
-    ind.textContent = show ? '▲ Recolher' : '▼ Ver resultados';
+    i.textContent = show ? '▲ Recolher' : '▼ Ver resultados';
+}
+
+
+// ════════════════════════════════════════════════
+// RENDER ALIANÇAS
+// ════════════════════════════════════════════════
+function renderAliancas() {
+    const data = processAll();
+
+    const bastardos = data.filter(l => l.alliance === 'bastardos');
+    const anel      = data.filter(l => l.alliance === 'anel');
+    const sumT = arr => arr.reduce((s,l) => s + l.totalPoints, 0);
+    const avgT = arr => sumT(arr) / arr.length;
+    const bPts = sumT(bastardos), aPts = sumT(anel);
+    const bAvg = avgT(bastardos), aAvg = avgT(anel);
+    const bWin = bPts > aPts, tie = bPts === aPts;
+
+    const bColor = '#B0BEC5', aColor = '#74b9ff';
+
+    const statRow = (label, bVal, aVal, fmt) => {
+        const bWins = bVal > aVal, tied = bVal === aVal;
+        return `
+        <div class="al-stat-row">
+            <div class="al-stat-val" style="color:${bColor}">
+                ${fmt(bVal)}${!tied && bWins ? ' <span style="font-size:0.65em">▲</span>' : ''}
+            </div>
+            <div class="al-stat-label">${label}</div>
+            <div class="al-stat-val" style="color:${aColor}">
+                ${fmt(aVal)}${!tied && !bWins ? ' <span style="font-size:0.65em">▲</span>' : ''}
+            </div>
+        </div>`;
+    };
+
+    const memberRow = (lord, alKey) => `
+    <div class="al-member-row ${alKey}">
+        <div class="al-member-avatar">${lord.avatar}</div>
+        <div class="al-member-info">
+            <div class="al-member-name">${lord.name}</div>
+            <div class="al-member-title">${lord.currentTitle || '📰 Escudeiro Sem Nome'}</div>
+        </div>
+        <div class="al-member-pts">
+            <div class="al-member-pts-main">${lord.totalPoints.toFixed(0)}</div>
+            <div class="al-member-pts-sub">📊 ${lord.cartolaPoints.toFixed(2)}</div>
+        </div>
+    </div>`;
+
+    const html = `
+    <div class="al-scoreboard">
+        <div class="al-scoreboard-title">Placar Geral das Alianças</div>
+        <div class="al-score-row">
+            <div class="al-score-side">
+                <div class="al-score-pts" style="color:${bColor}">${bPts.toFixed(0)}</div>
+                <div class="al-score-label" style="color:${bColor}">🗡️ Os Bastardos</div>
+                ${!tie && bWin ? `<div class="al-score-winner" style="background:rgba(80,80,100,0.2);border:1px solid #B0BEC5;color:#B0BEC5;">👑 Liderando</div>` : ''}
+            </div>
+            <div class="al-score-vs">VS</div>
+            <div class="al-score-side">
+                <div class="al-score-pts" style="color:${aColor}">${aPts.toFixed(0)}</div>
+                <div class="al-score-label" style="color:${aColor}">💍 Soc. do Anel</div>
+                ${!tie && !bWin ? `<div class="al-score-winner" style="background:rgba(41,128,185,0.2);border:1px solid #2980b9;color:#74b9ff;">👑 Liderando</div>` : ''}
+            </div>
+        </div>
+        ${statRow('Total', bPts, aPts, v => v.toFixed(0))}
+        ${statRow('Média / membro', bAvg, aAvg, v => v.toFixed(1))}
+        ${tie ? '<div style="margin-top:10px;text-align:center;font-family:Cinzel,serif;color:var(--gold);font-size:0.9em;">⚖️ Empate!</div>' : ''}
+    </div>
+
+    <div class="al-block">
+        <div class="al-header-card bastardos">
+            <div class="al-header-icon">🗡️</div>
+            <div class="al-header-info">
+                <div class="al-header-name bastardos">Os Bastardos</div>
+                <div class="al-header-sub">${ALLIANCES.bastardos.members}</div>
+            </div>
+            <div class="al-header-total">
+                <div class="al-header-pts bastardos">${bPts.toFixed(0)}</div>
+                <div class="al-header-avg">média ${bAvg.toFixed(1)}</div>
+            </div>
+        </div>
+        ${bastardos.sort((a,b) => b.totalPoints - a.totalPoints).map(l => memberRow(l,'bastardos')).join('')}
+    </div>
+
+    <div class="al-vs-divider">— VS —</div>
+
+    <div class="al-block">
+        <div class="al-header-card anel">
+            <div class="al-header-icon">💍</div>
+            <div class="al-header-info">
+                <div class="al-header-name anel">Sociedade do Anel</div>
+                <div class="al-header-sub">${ALLIANCES.anel.members}</div>
+            </div>
+            <div class="al-header-total">
+                <div class="al-header-pts anel">${aPts.toFixed(0)}</div>
+                <div class="al-header-avg">média ${aAvg.toFixed(1)}</div>
+            </div>
+        </div>
+        ${anel.sort((a,b) => b.totalPoints - a.totalPoints).map(l => memberRow(l,'anel')).join('')}
+    </div>`;
+
+    document.getElementById('aliancas-content').innerHTML = html;
 }
 
 function switchTab(name, btn) {
@@ -1189,46 +1334,43 @@ function switchTab(name, btn) {
 }
 
 // ═══════════════════════════════════════════════
-// INICIALIZAR — LEITURA DO CSV
+// INICIALIZAR
 // ═══════════════════════════════════════════════
-async function init() {
+document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch('dados.csv?v=' + Date.now());
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const csvText = await response.text();
+        const res = await fetch('dados.csv?v=' + Date.now());
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const csv = await res.text();
+        const rows = parseCSV(csv);
+        if (!rows.length) throw new Error('dados.csv vazio ou formato inválido.');
+        BATTLES = buildBattles(rows);
 
-        const rows = parseCSV(csvText);
-        if (rows.length === 0) throw new Error('Arquivo dados.csv está vazio ou com formato inválido.');
-
-        const BATTLES = buildBattles(rows);
         const lastRound = Math.max(...BATTLES.map(b => b.week));
+        const roundEl = document.getElementById('current-round');
+        if (roundEl) roundEl.textContent = lastRound;
 
-        document.getElementById('current-round').textContent = lastRound;
-        document.getElementById('last-updated').textContent =
-            'Atualizado ' + new Date().toLocaleDateString('pt-BR');
-
-        const processedData = processAll(BATTLES);
-
-        renderRanking(processedData);
-        renderMedieval(processedData);
-        renderBattles(BATTLES, processedData);
-        renderAchievements(processedData);
+        renderRanking();
+        renderAliancas();
+        renderMedieval();
+        renderBattles();
+        renderAchievements();
         renderRules();
-
-        // Hide loading
-        document.getElementById('loading').style.display = 'none';
-
-    } catch (err) {
-        document.getElementById('loading').style.display = 'none';
-        const errScreen = document.getElementById('error-screen');
-        errScreen.style.display = 'flex';
-        document.getElementById('error-msg').textContent =
-            `Erro: ${err.message}. Verifique se o arquivo dados.csv está na mesma pasta que o index.html e se o servidor está ativo.`;
-        console.error('Guerra dos Reinos — erro ao carregar:', err);
+    } catch(err) {
+        document.body.innerHTML = `
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;
+                        min-height:100vh;padding:24px;text-align:center;background:#0d0d1a;">
+                <div style="font-size:3em;margin-bottom:16px;">🏚️</div>
+                <div style="font-family:Cinzel,serif;color:#e74c3c;font-size:1.2em;margin-bottom:12px;">
+                    Erro ao carregar dados
+                </div>
+                <div style="color:#9988aa;font-size:0.95em;line-height:1.6;">
+                    ${err.message}<br><br>
+                    Verifique se <strong style="color:#DAA520">dados.csv</strong> está na mesma pasta que index.html.
+                </div>
+            </div>`;
+        console.error(err);
     }
-}
-
-document.addEventListener('DOMContentLoaded', init);
+});
 
 </script>
 </body>
