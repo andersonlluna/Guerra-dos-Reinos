@@ -5,8 +5,8 @@ const LORDS = [
     { id: 1,  name: 'Icebergteam',    house: 'Forja Polar',         avatar: '❄️',  color: '#00CED1', alliance: 'anel'      },
     { id: 2,  name: 'Sons of Númenor',house: 'Herdeiros de Elendil', avatar: '🛡️',  color: '#4169E1', alliance: 'bastardos' },
     { id: 3,  name: 'Ironverdict',    house: 'Forja da Justiça',    avatar: '🗡️',  color: '#8a8a8a', alliance: 'bastardos' },
-    { id: 4,  name: 'CEEC',           house: 'Mestre das Espadas',  avatar: '⚔️',  color: '#8B0000', alliance: 'anel'      },
-    { id: 5,  name: 'Otopatamá',      house: 'Samurais Guerreiros', avatar: '🤖',  color: '#1E90FF', alliance: 'anel'      },
+    { id: 4,  name: 'CEEC',           house: 'Mestre das Espadas',  avatar: '⚔️',  color: '#8B0000', alliance: 'northclaw' },
+    { id: 5,  name: 'Otopatamá',      house: 'Samurais Guerreiros', avatar: '🤖',  color: '#1E90FF', alliance: 'northclaw' },
     { id: 6,  name: 'Andorinha Jr',   house: 'Jovem Veloz',         avatar: '🐦',  color: '#FF6347', alliance: 'anel'      },
     { id: 7,  name: 'Andorinha',      house: 'Senhores do Voo',     avatar: '🦅',  color: '#DC143C', alliance: 'anel'      },
     { id: 8,  name: 'Varelitas',      house: 'Guardas da Colina',   avatar: '🦊',  color: '#228B22', alliance: 'bastardos' },
@@ -14,8 +14,9 @@ const LORDS = [
 ];
 
 const ALLIANCES = {
-    bastardos: { label: 'Os Bastardos',      icon: '🗡️', members: 'Varelitas · Lobonegro · Sons of Númenor · Ironverdict' },
-    anel:      { label: 'Sociedade do Anel', icon: '💍', members: 'Icebergteam · CEEC · Otopatamá · Andorinha Jr · Andorinha' },
+    bastardos: { label: 'Os Bastardos',      icon: '🗡️', color: '#B0BEC5', members: 'Sons of Númenor · Ironverdict · Varelitas · Lobonegro' },
+    anel:      { label: 'Sociedade do Anel', icon: '💍', color: '#74b9ff', members: 'Andorinha · Andorinha Jr · Icebergteam' },
+    northclaw: { label: 'North Claw',        icon: '🐾', color: '#a29bfe', members: 'CEEC · Otopatamá' },
 };
 
 // ═══════════════════════════════════════════════
@@ -733,29 +734,22 @@ function toggleBattle(week, cardEl) {
 // RENDER ALIANÇAS
 // ════════════════════════════════════════════════
 function renderAliancas(data) {
-    const bastardos = data.filter(l => l.alliance === 'bastardos');
-    const anel      = data.filter(l => l.alliance === 'anel');
-    const sumT      = arr => arr.reduce((s, l) => s + l.totalPoints, 0);
-    const avgT      = arr => sumT(arr) / arr.length;
-    const bPts = sumT(bastardos), aPts = sumT(anel);
-    const bAvg = avgT(bastardos), aAvg = avgT(anel);
-    const bWin = bPts > aPts, tie = bPts === aPts;
+    const sumT = arr => arr.reduce((s, l) => s + l.totalPoints, 0);
+    const avgT = arr => sumT(arr) / arr.length;
 
-    const bColor = '#B0BEC5', aColor = '#74b9ff';
+    // Montar stats das 3 alianças e ordenar por pontuação
+    const alStats = Object.entries(ALLIANCES).map(([key, al]) => {
+        const memberData = data.filter(l => l.alliance === key);
+        return {
+            key,
+            memberData,
+            pts: sumT(memberData),
+            avg: memberData.length ? avgT(memberData) : 0,
+            ...al,
+        };
+    }).sort((a, b) => b.pts - a.pts);
 
-    const statRow = (label, bVal, aVal, fmt) => {
-        const bWins = bVal > aVal, tied = bVal === aVal;
-        return `
-        <div class="al-stat-row">
-            <div class="al-stat-val" style="color:${bColor}">
-                ${fmt(bVal)}${!tied && bWins ? ' <span aria-hidden="true" style="font-size:0.65em">▲</span>' : ''}
-            </div>
-            <div class="al-stat-label">${label}</div>
-            <div class="al-stat-val" style="color:${aColor}">
-                ${fmt(aVal)}${!tied && !bWins ? ' <span aria-hidden="true" style="font-size:0.65em">▲</span>' : ''}
-            </div>
-        </div>`;
-    };
+    const medalha = ['🥇', '🥈', '🥉'];
 
     const memberRow = (lord, alKey) => `
     <div class="al-member-row ${alKey}">
@@ -770,60 +764,39 @@ function renderAliancas(data) {
         </div>
     </div>`;
 
-    const html = `
+    const scoreboard = `
     <div class="al-scoreboard" role="region" aria-label="Placar das Alianças">
         <div class="al-scoreboard-title">Placar Geral das Alianças</div>
-        <div class="al-score-row">
-            <div class="al-score-side">
-                <div class="al-score-pts" style="color:${bColor}">${bPts.toFixed(0)}</div>
-                <div class="al-score-label" style="color:${bColor}">🗡️ Os Bastardos</div>
-                ${!tie && bWin ? `<div class="al-score-winner al-score-winner-bastardos">👑 Liderando</div>` : ''}
+        ${alStats.map((al, i) => `
+        <div class="al-rank-row">
+            <div class="al-rank-pos" aria-label="${i + 1}º lugar">${medalha[i] || `${i + 1}º`}</div>
+            <div class="al-rank-icon" aria-hidden="true">${al.icon}</div>
+            <div class="al-rank-info">
+                <div class="al-rank-name" style="color:${al.color}">${al.label}</div>
+                <div class="al-rank-avg">média ${al.avg.toFixed(1)} · ${al.memberData.length} membro${al.memberData.length !== 1 ? 's' : ''}</div>
             </div>
-            <div class="al-score-vs" aria-label="versus">VS</div>
-            <div class="al-score-side">
-                <div class="al-score-pts" style="color:${aColor}">${aPts.toFixed(0)}</div>
-                <div class="al-score-label" style="color:${aColor}">💍 Soc. do Anel</div>
-                ${!tie && !bWin ? `<div class="al-score-winner al-score-winner-anel">👑 Liderando</div>` : ''}
-            </div>
-        </div>
-        ${statRow('Total', bPts, aPts, v => v.toFixed(0))}
-        ${statRow('Média / membro', bAvg, aAvg, v => v.toFixed(1))}
-        ${tie ? '<div class="al-tie-msg">⚖️ Empate!</div>' : ''}
-    </div>
-
-    <div class="al-block">
-        <div class="al-header-card bastardos" role="heading" aria-level="3">
-            <div class="al-header-icon" aria-hidden="true">🗡️</div>
-            <div class="al-header-info">
-                <div class="al-header-name bastardos">Os Bastardos</div>
-                <div class="al-header-sub">${ALLIANCES.bastardos.members}</div>
-            </div>
-            <div class="al-header-total">
-                <div class="al-header-pts bastardos">${bPts.toFixed(0)}</div>
-                <div class="al-header-avg">média ${bAvg.toFixed(1)}</div>
-            </div>
-        </div>
-        ${bastardos.sort((a, b) => b.totalPoints - a.totalPoints).map(l => memberRow(l, 'bastardos')).join('')}
-    </div>
-
-    <div class="al-vs-divider" aria-hidden="true">— VS —</div>
-
-    <div class="al-block">
-        <div class="al-header-card anel" role="heading" aria-level="3">
-            <div class="al-header-icon" aria-hidden="true">💍</div>
-            <div class="al-header-info">
-                <div class="al-header-name anel">Sociedade do Anel</div>
-                <div class="al-header-sub">${ALLIANCES.anel.members}</div>
-            </div>
-            <div class="al-header-total">
-                <div class="al-header-pts anel">${aPts.toFixed(0)}</div>
-                <div class="al-header-avg">média ${aAvg.toFixed(1)}</div>
-            </div>
-        </div>
-        ${anel.sort((a, b) => b.totalPoints - a.totalPoints).map(l => memberRow(l, 'anel')).join('')}
+            <div class="al-rank-pts" style="color:${al.color}">${al.pts.toFixed(0)}</div>
+        </div>`).join('')}
     </div>`;
 
-    document.getElementById('aliancas-content').innerHTML = html;
+    const blocks = alStats.map((al, i) => `
+    <div class="al-block">
+        <div class="al-header-card ${al.key}" role="heading" aria-level="3">
+            <div class="al-header-icon" aria-hidden="true">${al.icon}</div>
+            <div class="al-header-info">
+                <div class="al-header-name ${al.key}">${al.label}</div>
+                <div class="al-header-sub">${al.members}</div>
+            </div>
+            <div class="al-header-total">
+                <div class="al-header-pts ${al.key}">${al.pts.toFixed(0)}</div>
+                <div class="al-header-avg">média ${al.avg.toFixed(1)}</div>
+            </div>
+        </div>
+        ${al.memberData.sort((a, b) => b.totalPoints - a.totalPoints).map(l => memberRow(l, al.key)).join('')}
+    </div>
+    ${i < alStats.length - 1 ? '<div class="al-vs-divider" aria-hidden="true">— VS —</div>' : ''}`).join('');
+
+    document.getElementById('aliancas-content').innerHTML = scoreboard + blocks;
 }
 
 function switchTab(name, btn) {

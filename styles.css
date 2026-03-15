@@ -594,6 +594,37 @@ body {
     font-family: 'Cinzel', serif; color: var(--gold); font-size: 0.9em;
 }
 
+/* ── NORTH CLAW ── */
+.al-header-card.northclaw {
+    background: linear-gradient(135deg, rgba(108,92,231,0.2), rgba(108,92,231,0.05));
+    border: 2px solid rgba(162,155,254,0.4);
+}
+.al-header-name.northclaw { color: #a29bfe; }
+.al-header-pts.northclaw  { color: #a29bfe; }
+.al-member-row.northclaw  { border-color: rgba(162,155,254,0.3); background: rgba(108,92,231,0.05); }
+
+/* ── RANKING SCOREBOARD (3 alianças) ── */
+.al-rank-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.al-rank-row:last-child { border-bottom: none; }
+.al-rank-pos {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4em;
+    font-weight: 900;
+    min-width: 36px;
+    text-align: center;
+}
+.al-rank-icon { font-size: 1.6em; flex-shrink: 0; }
+.al-rank-info { flex: 1; min-width: 0; }
+.al-rank-name { font-family: 'Cinzel', serif; font-size: 1em; font-weight: 700; }
+.al-rank-avg  { font-size: 0.78em; color: var(--text-muted); margin-top: 2px; font-style: italic; }
+.al-rank-pts  { font-family: 'Cinzel', serif; font-size: 1.7em; font-weight: 900; }
+
 /* ── MEDIA QUERIES ── */
 @media (min-width: 480px) {
     body { font-size: 19px; }
