@@ -14,7 +14,7 @@ const LORDS = [
 ];
 
 const ALLIANCES = {
-    bastardos: { label: 'Os Bastardos',      icon: '🗡️', color: '#B0BEC5', members: 'Sons of Númenor · Ironverdict · Varelitas · Lobonegro' },
+    bastardos: { label: 'Bastardos',      icon: '🗡️', color: '#B0BEC5', members: 'Sons of Númenor · Ironverdict · Varelitas · Lobonegro' },
     anel:      { label: 'Sociedade do Anel', icon: '💍', color: '#74b9ff', members: 'Andorinha · Andorinha Jr · Icebergteam' },
     northclaw: { label: 'North Claw',        icon: '🐾', color: '#a29bfe', members: 'CEEC · Otopatamá' },
 };
