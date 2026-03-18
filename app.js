@@ -810,6 +810,7 @@ function renderAliancas(data) {
             </div>
             <div class="al-header-total">
                 <div class="al-header-pts ${al.key}">${al.pts.toFixed(0)}</div>
+                <div class="al-header-avg">⌀ ${al.avg.toFixed(1)} pts/lord</div>
             </div>
         </div>
         ${al.memberData.sort((a, b) => b.totalPoints - a.totalPoints).map(l => memberRow(l, al.key)).join('')}
