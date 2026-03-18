@@ -590,6 +590,9 @@ body {
 .al-member-info { flex: 1; }
 .al-member-name { font-family: 'Cinzel', serif; font-size: 0.95em; font-weight: 700; color: var(--gold-light); }
 .al-member-title { font-size: 0.8em; color: var(--gold); font-style: italic; }
+.al-member-stats { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+.al-member-stats span { font-size: 0.72em; background: rgba(255,255,255,0.07); padding: 2px 7px; border-radius: 10px; color: #ccc; }
+.al-member-stats .al-stat-neg { color: #e74c3c; }
 .al-member-pts { text-align: right; }
 .al-member-pts-main { font-family: 'Cinzel', serif; font-size: 1.15em; font-weight: 700; color: var(--gold-light); }
 .al-member-pts-sub { font-size: 0.75em; color: var(--text-muted); }
