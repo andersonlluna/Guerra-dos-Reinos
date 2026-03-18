@@ -345,9 +345,11 @@ function renderRanking(data) {
                 <div class="total-points">${lord.totalPoints.toFixed(2)}</div>
                 <div class="pts-label-main">Pontos Gerais</div>
                 <div class="points-breakdown">
-                    <div class="pts-breakdown-row"><span class="pts-breakdown-label">Cartola</span><span class="pts-cartola">${lord.cartolaPoints.toFixed(2)}</span></div>
-                    <div class="pts-breakdown-row"><span class="pts-breakdown-label">Medieval</span><span class="${medClass}">${medSign}${lord.medievalPoints}</span></div>
-                    <div class="pts-breakdown-row"><span class="pts-breakdown-label">Média</span><span class="pts-avg-val">${avgCartola} pts/rod</span></div>
+                    <span class="pts-cartola" title="Cartola">📊 ${lord.cartolaPoints.toFixed(2)}</span>
+                    <span class="pts-sep">·</span>
+                    <span class="${medClass}" title="Medieval">⚔️ ${medSign}${lord.medievalPoints}</span>
+                    <span class="pts-sep">·</span>
+                    <span class="pts-avg-val" title="Média Cartola">📈 ${avgCartola}/rod</span>
                 </div>
             </div>
             <div class="lord-details" id="details-${lord.id}" role="region" aria-label="Detalhes de ${lord.name}">

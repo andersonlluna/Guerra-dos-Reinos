@@ -179,25 +179,16 @@ body {
 }
 .points-breakdown {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 4px;
-    font-size: 0.95em;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 0.88em;
     font-weight: 600;
-    width: 100%;
+    margin-top: 2px;
 }
-.pts-breakdown-row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 220px;
-    gap: 8px;
-}
-.pts-breakdown-label {
-    color: var(--text-muted);
-    font-size: 0.9em;
-    font-weight: 400;
-}
+.pts-sep { color: var(--text-muted); font-weight: 300; }
 .pts-cartola { color: #4CAF50; }
 .pts-medieval-pos { color: var(--gold); }
 .pts-medieval-neg { color: #e74c3c; }
