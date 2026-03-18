@@ -751,7 +751,10 @@ function renderAliancas(data) {
 
     const medalha = ['🥇', '🥈', '🥉'];
 
-    const memberRow = (lord, alKey) => `
+    const memberRow = (lord, alKey) => {
+        const rodadas = BATTLES.length || 1;
+        const avgCartola = (lord.cartolaPoints / rodadas).toFixed(1);
+        return `
     <div class="al-member-row ${alKey}">
         <div class="al-member-avatar" aria-hidden="true">${lord.avatar}</div>
         <div class="al-member-info">
@@ -761,8 +764,10 @@ function renderAliancas(data) {
         <div class="al-member-pts">
             <div class="al-member-pts-main">${lord.totalPoints.toFixed(0)}</div>
             <div class="al-member-pts-sub">📊 ${lord.cartolaPoints.toFixed(2)}</div>
+            <div class="al-member-pts-avg">⌀ ${avgCartola}/rod</div>
         </div>
     </div>`;
+    };
 
     const scoreboard = `
     <div class="al-scoreboard" role="region" aria-label="Placar das Alianças">
