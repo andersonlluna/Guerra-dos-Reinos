@@ -173,23 +173,35 @@ body {
     text-shadow: 0 0 15px rgba(255,215,0,0.3);
 }
 
+.pts-label-main {
+    font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-muted); margin-top: -2px; margin-bottom: 6px;
+}
 .points-breakdown {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    font-size: 1.05em;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.95em;
     font-weight: 600;
-    flex-wrap: wrap;
+    width: 100%;
 }
-
+.pts-breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 220px;
+    gap: 8px;
+}
+.pts-breakdown-label {
+    color: var(--text-muted);
+    font-size: 0.9em;
+    font-weight: 400;
+}
 .pts-cartola { color: #4CAF50; }
 .pts-medieval-pos { color: var(--gold); }
 .pts-medieval-neg { color: #e74c3c; }
-.pts-avg-cartola {
-    font-size: 0.78em; color: #7ec8e3; margin-top: 5px;
-    background: rgba(126,200,227,0.1); border-radius: 5px;
-    padding: 2px 8px; display: inline-block;
-}
+.pts-avg-val { color: #7ec8e3; }
 
 /* STATS GRID */
 .stats-grid {
@@ -640,7 +652,9 @@ body {
 .al-rank-info { flex: 1; min-width: 0; }
 .al-rank-name { font-family: 'Cinzel', serif; font-size: 1em; font-weight: 700; }
 .al-rank-avg  { font-size: 0.9em; color: var(--gold); font-weight: 700; margin-top: 4px; }
-.al-rank-pts  { font-family: 'Cinzel', serif; font-size: 1.7em; font-weight: 900; }
+.al-rank-pts-block { text-align: right; }
+.al-rank-pts  { font-family: 'Cinzel', serif; font-size: 1.7em; font-weight: 900; line-height: 1.1; }
+.al-rank-pts-avg { font-size: 0.78em; color: var(--gold); font-weight: 600; margin-top: 2px; }
 
 /* ── MEDIA QUERIES ── */
 @media (min-width: 480px) {
