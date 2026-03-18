@@ -319,6 +319,8 @@ function renderRanking(data) {
         const posClass = i === 0 ? 'pos-1' : i === 1 ? 'pos-2' : i === 2 ? 'pos-3' : 'pos-n';
         const medClass = lord.medievalPoints >= 0 ? 'pts-medieval-pos' : 'pts-medieval-neg';
         const medSign  = lord.medievalPoints >= 0 ? '+' : '';
+        const rodadas  = BATTLES.length || 1;
+        const avgCartola = (lord.cartolaPoints / rodadas).toFixed(1);
 
         return `
         <div class="lord-card expandable"
@@ -345,6 +347,7 @@ function renderRanking(data) {
                     <span class="pts-cartola">📊 ${lord.cartolaPoints.toFixed(2)}</span>
                     <span class="${medClass}">⚔️ ${medSign}${lord.medievalPoints}</span>
                 </div>
+                <div class="pts-avg-cartola">📊 Média Cartola: <strong>${avgCartola}</strong> pts/rod</div>
             </div>
             <div class="lord-details" id="details-${lord.id}" role="region" aria-label="Detalhes de ${lord.name}">
                 <div class="stats-grid">
@@ -752,19 +755,26 @@ function renderAliancas(data) {
     const medalha = ['🥇', '🥈', '🥉'];
 
     const memberRow = (lord, alKey) => {
-        const rodadas = BATTLES.length || 1;
-        const avgCartola = (lord.cartolaPoints / rodadas).toFixed(1);
+        const statsSpans = [
+            lord.mvp        ? `<span>🏆 ${lord.mvp}</span>`                        : '',
+            lord.mitada     ? `<span>💀 ${lord.mitada}</span>`                      : '',
+            lord.podio      ? `<span>🥇 ${lord.podio}</span>`                       : '',
+            lord.recuperacao? `<span>📈 ${lord.recuperacao}</span>`                 : '',
+            lord.massacre   ? `<span>🗡️ ${lord.massacre}</span>`                   : '',
+            lord.lanterna   ? `<span class="al-stat-neg">🔦 ${lord.lanterna}</span>`: '',
+        ].filter(Boolean).join('');
+
         return `
     <div class="al-member-row ${alKey}">
         <div class="al-member-avatar" aria-hidden="true">${lord.avatar}</div>
         <div class="al-member-info">
             <div class="al-member-name">${lord.name}</div>
             <div class="al-member-title">${lord.currentTitle || '📰 Escudeiro Sem Nome'}</div>
+            ${statsSpans ? `<div class="al-member-stats">${statsSpans}</div>` : ''}
         </div>
         <div class="al-member-pts">
             <div class="al-member-pts-main">${lord.totalPoints.toFixed(0)}</div>
             <div class="al-member-pts-sub">📊 ${lord.cartolaPoints.toFixed(2)}</div>
-            <div class="al-member-pts-avg">⌀ ${avgCartola}/rod</div>
         </div>
     </div>`;
     };
@@ -778,7 +788,7 @@ function renderAliancas(data) {
             <div class="al-rank-icon" aria-hidden="true">${al.icon}</div>
             <div class="al-rank-info">
                 <div class="al-rank-name" style="color:${al.color}">${al.label}</div>
-                <div class="al-rank-avg">média ${al.avg.toFixed(1)} · ${al.memberData.length} membro${al.memberData.length !== 1 ? 's' : ''}</div>
+                <div class="al-rank-avg">${al.memberData.length} membro${al.memberData.length !== 1 ? 's' : ''}</div>
             </div>
             <div class="al-rank-pts" style="color:${al.color}">${al.pts.toFixed(0)}</div>
         </div>`).join('')}
@@ -794,7 +804,6 @@ function renderAliancas(data) {
             </div>
             <div class="al-header-total">
                 <div class="al-header-pts ${al.key}">${al.pts.toFixed(0)}</div>
-                <div class="al-header-avg">média ${al.avg.toFixed(1)}</div>
             </div>
         </div>
         ${al.memberData.sort((a, b) => b.totalPoints - a.totalPoints).map(l => memberRow(l, al.key)).join('')}
