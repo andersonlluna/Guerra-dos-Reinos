@@ -319,6 +319,8 @@ function renderRanking(data) {
         const posClass = i === 0 ? 'pos-1' : i === 1 ? 'pos-2' : i === 2 ? 'pos-3' : 'pos-n';
         const medClass = lord.medievalPoints >= 0 ? 'pts-medieval-pos' : 'pts-medieval-neg';
         const medSign  = lord.medievalPoints >= 0 ? '+' : '';
+        const rodadas  = BATTLES.length || 1;
+        const avgCartola = (lord.cartolaPoints / rodadas).toFixed(1);
 
         return `
         <div class="lord-card expandable"
@@ -345,6 +347,7 @@ function renderRanking(data) {
                     <span class="pts-cartola">📊 ${lord.cartolaPoints.toFixed(2)}</span>
                     <span class="${medClass}">⚔️ ${medSign}${lord.medievalPoints}</span>
                 </div>
+                <div class="pts-avg-cartola">📊 Média Cartola: <strong>${avgCartola}</strong> pts/rod</div>
             </div>
             <div class="lord-details" id="details-${lord.id}" role="region" aria-label="Detalhes de ${lord.name}">
                 <div class="stats-grid">
@@ -752,8 +755,6 @@ function renderAliancas(data) {
     const medalha = ['🥇', '🥈', '🥉'];
 
     const memberRow = (lord, alKey) => {
-        const rodadas = BATTLES.length || 1;
-        const avgCartola = (lord.cartolaPoints / rodadas).toFixed(1);
         return `
     <div class="al-member-row ${alKey}">
         <div class="al-member-avatar" aria-hidden="true">${lord.avatar}</div>
@@ -764,7 +765,6 @@ function renderAliancas(data) {
         <div class="al-member-pts">
             <div class="al-member-pts-main">${lord.totalPoints.toFixed(0)}</div>
             <div class="al-member-pts-sub">📊 ${lord.cartolaPoints.toFixed(2)}</div>
-            <div class="al-member-pts-avg">⌀ ${avgCartola}/rod</div>
         </div>
     </div>`;
     };

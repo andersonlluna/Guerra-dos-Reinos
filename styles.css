@@ -185,6 +185,11 @@ body {
 .pts-cartola { color: #4CAF50; }
 .pts-medieval-pos { color: var(--gold); }
 .pts-medieval-neg { color: #e74c3c; }
+.pts-avg-cartola {
+    font-size: 0.78em; color: #7ec8e3; margin-top: 5px;
+    background: rgba(126,200,227,0.1); border-radius: 5px;
+    padding: 2px 8px; display: inline-block;
+}
 
 /* STATS GRID */
 .stats-grid {
@@ -571,9 +576,9 @@ body {
 .al-header-pts.bastardos { color: #B0BEC5; }
 .al-header-pts.anel      { color: #74b9ff; }
 .al-header-avg {
-    font-size: 0.85em; font-weight: 700; color: var(--gold);
-    background: rgba(218,165,32,0.13); border: 1px solid rgba(218,165,32,0.3);
-    border-radius: 5px; padding: 2px 8px; display: inline-block; margin-top: 5px;
+    font-size: 1em; font-weight: 700; color: var(--gold);
+    background: rgba(218,165,32,0.15); border: 1px solid rgba(218,165,32,0.4);
+    border-radius: 6px; padding: 3px 10px; display: inline-block; margin-top: 6px;
 }
 .al-member-row {
     display: flex; align-items: center; gap: 10px;
@@ -631,7 +636,7 @@ body {
 .al-rank-icon { font-size: 1.6em; flex-shrink: 0; }
 .al-rank-info { flex: 1; min-width: 0; }
 .al-rank-name { font-family: 'Cinzel', serif; font-size: 1em; font-weight: 700; }
-.al-rank-avg  { font-size: 0.85em; color: var(--gold); font-weight: 600; margin-top: 3px; }
+.al-rank-avg  { font-size: 0.9em; color: var(--gold); font-weight: 700; margin-top: 4px; }
 .al-rank-pts  { font-family: 'Cinzel', serif; font-size: 1.7em; font-weight: 900; }
 
 /* ── MEDIA QUERIES ── */
