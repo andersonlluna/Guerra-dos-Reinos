@@ -107,7 +107,7 @@ const TITLES = {
         { min: 10, title: '⚡ Portador da Espada de Fogo' },
         { min: 7,  title: '💎 Portador da Garra Longa' },
         { min: 5,  title: '🌟 Cavaleiro do Amanhecer' },
-        { min: 3,  title: '⚔️ Empunhador de Anduril' },
+        { min: 3,  title: '⚔️ Empunhador de Andúril' },
         { min: 1,  title: '🔥 Portador da Ferroada' },
     ],
     recuperacao: [
