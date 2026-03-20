@@ -579,9 +579,8 @@ body {
 .al-header-pts.bastardos { color: #B0BEC5; }
 .al-header-pts.anel      { color: #74b9ff; }
 .al-header-avg {
-    font-size: 1em; font-weight: 700; color: var(--gold);
-    background: rgba(218,165,32,0.15); border: 1px solid rgba(218,165,32,0.4);
-    border-radius: 6px; padding: 3px 10px; display: inline-block; margin-top: 6px;
+    font-size: 0.75em; font-weight: 600; color: var(--text-muted);
+    margin-top: 3px; letter-spacing: 0.02em;
 }
 .al-member-row {
     display: flex; align-items: center; gap: 10px;
@@ -645,7 +644,8 @@ body {
 .al-rank-avg  { font-size: 0.9em; color: var(--gold); font-weight: 700; margin-top: 4px; }
 .al-rank-pts-block { text-align: right; }
 .al-rank-pts  { font-family: 'Cinzel', serif; font-size: 1.7em; font-weight: 900; line-height: 1.1; }
-.al-rank-pts-avg { font-size: 0.78em; color: var(--gold); font-weight: 600; margin-top: 2px; }
+.al-rank-pts-avg { font-size: 0.72em; color: var(--text-muted); font-weight: 600; margin-top: 3px; letter-spacing: 0.02em; }
+.al-rank-pts-avg strong { color: var(--gold); }
 
 /* ── MEDIA QUERIES ── */
 @media (min-width: 480px) {
