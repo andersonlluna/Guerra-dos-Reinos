@@ -508,11 +508,6 @@ body {
     margin: 20px 0;
 }
 
-/* PROGRESS BAR */
-.prog-label { font-size: 0.85em; color: var(--text-muted); margin-bottom: 4px; display: flex; justify-content: space-between; }
-.prog-bar-bg { background: rgba(255,255,255,0.07); border-radius: 4px; height: 8px; margin-bottom: 10px; overflow: hidden; }
-.prog-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light)); }
-
 /* SCROLLBAR */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #0d0d1a; }
@@ -526,34 +521,6 @@ body {
 .al-scoreboard-title {
     font-family: 'Cinzel', serif; font-size: 0.82em; color: var(--text-muted);
     letter-spacing: 0.1em; text-transform: uppercase; text-align: center; margin-bottom: 14px;
-}
-.al-score-row { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
-.al-score-side { flex: 1; text-align: center; }
-.al-score-pts { font-family: 'Cinzel', serif; font-size: 2.2em; font-weight: 900; line-height: 1; }
-.al-score-label { font-size: 0.88em; font-style: italic; margin-top: 4px; }
-.al-score-winner {
-    display: inline-block; margin-top: 6px; font-family: 'Cinzel', serif;
-    font-size: 0.72em; padding: 2px 10px; border-radius: 20px; font-weight: 700;
-}
-.al-score-winner-bastardos {
-    background: rgba(80,80,100,0.2); border: 1px solid #B0BEC5; color: #B0BEC5;
-}
-.al-score-winner-anel {
-    background: rgba(41,128,185,0.2); border: 1px solid #2980b9; color: #74b9ff;
-}
-.al-score-vs {
-    font-family: 'Cinzel', serif; font-size: 1.5em; font-weight: 900;
-    color: var(--gold); text-shadow: 0 0 10px rgba(255,215,0,0.3); flex-shrink: 0;
-}
-.al-stat-row {
-    display: flex; align-items: center; gap: 8px;
-    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.al-stat-row:last-child { border-bottom: none; }
-.al-stat-val { flex: 1; text-align: center; font-family: 'Cinzel', serif; font-size: 1.2em; font-weight: 900; }
-.al-stat-label {
-    font-family: 'Cinzel', serif; font-size: 0.72em; color: var(--text-muted);
-    text-align: center; min-width: 90px; letter-spacing: 0.06em; text-transform: uppercase;
 }
 .al-block { margin-bottom: 24px; }
 .al-header-card {
@@ -598,21 +565,11 @@ body {
 .al-member-pts { text-align: right; }
 .al-member-pts-main { font-family: 'Cinzel', serif; font-size: 1.15em; font-weight: 700; color: var(--gold-light); }
 .al-member-pts-sub { font-size: 0.75em; color: var(--text-muted); }
-.al-member-pts-avg {
-    font-size: 0.78em; font-weight: 700; color: #7ec8e3;
-    background: rgba(126,200,227,0.1); border-radius: 4px;
-    padding: 1px 5px; display: inline-block; margin-top: 3px;
-}
 .al-vs-divider {
     text-align: center; font-family: 'Cinzel', serif; font-size: 1.2em; font-weight: 900;
     color: var(--gold); margin: 4px 0 18px; letter-spacing: 0.15em;
     text-shadow: 0 0 10px rgba(255,215,0,0.3);
 }
-.al-tie-msg {
-    margin-top: 10px; text-align: center;
-    font-family: 'Cinzel', serif; color: var(--gold); font-size: 0.9em;
-}
-
 /* ── NORTH CLAW ── */
 .al-header-card.northclaw {
     background: linear-gradient(135deg, rgba(108,92,231,0.2), rgba(108,92,231,0.05));

@@ -413,6 +413,7 @@ function renderBattles(data) {
 
     el.innerHTML = BATTLES.map(battle => {
         const sorted = [...battle.results].sort((a, b) => b.points - a.points);
+        if (!sorted.length) return '';
         const winner = lordById.get(sorted[0].lordId);
 
         return `
@@ -439,7 +440,8 @@ function renderBattles(data) {
                     else if (r.points >= 100) badges.push('💥+100');
                     else if (r.points >= 90)  badges.push('⚡+90');
                     else if (r.points >= 80)  badges.push('💀+80');
-                    if (idx < 3) badges.push('🥇');
+                    if (idx === 1) badges.push('🥈');
+                    else if (idx === 2) badges.push('🥉');
                     if (isLast && r.points > 0) badges.push('🔦');
 
                     return `
