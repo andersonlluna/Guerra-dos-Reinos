@@ -793,11 +793,12 @@ function renderAliancas(data) {
             <div class="al-rank-icon" aria-hidden="true">${al.icon}</div>
             <div class="al-rank-info">
                 <div class="al-rank-name" style="color:${al.color}">${al.label}</div>
-                <div class="al-rank-avg">${al.memberData.length} membro${al.memberData.length !== 1 ? 's' : ''}</div>
+                <div class="al-rank-members">${al.members}</div>
             </div>
             <div class="al-rank-pts-block">
-                <div class="al-rank-pts" style="color:${al.color}">${al.pts.toFixed(0)}</div>
-                <div class="al-rank-pts-avg">média <strong>${al.avg.toFixed(1)}</strong></div>
+                <div class="al-rank-pts">${al.pts.toFixed(0)}</div>
+                <div class="al-rank-media-label">Média</div>
+                <div class="al-rank-media-val">${al.avg.toFixed(1)}</div>
             </div>
         </div>`).join('')}
     </div>`;

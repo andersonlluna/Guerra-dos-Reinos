@@ -509,10 +509,6 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 4px; }
 
 /* ── ALLIANCE TAB ── */
-.al-scoreboard {
-    background: rgba(218,165,32,0.07); border: 2px solid rgba(218,165,32,0.25);
-    border-radius: 14px; padding: 18px 16px; margin-bottom: 20px;
-}
 .al-scoreboard-title {
     font-family: 'Cinzel', serif; font-size: 0.82em; color: var(--text-muted);
     letter-spacing: 0.1em; text-transform: uppercase; text-align: center; margin-bottom: 14px;
@@ -575,29 +571,39 @@ body {
 .al-member-row.northclaw  { border-color: rgba(162,155,254,0.3); background: rgba(108,92,231,0.05); }
 
 /* ── RANKING SCOREBOARD (3 alianças) ── */
+.al-scoreboard {
+    background: rgba(12, 10, 30, 0.95);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 24px 20px;
+    margin-bottom: 20px;
+}
 .al-rank-row {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 13px 0;
+    gap: 14px;
+    padding: 18px 0;
     border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .al-rank-row:last-child { border-bottom: none; }
 .al-rank-pos {
-    font-family: 'Cinzel', serif;
-    font-size: 1.4em;
-    font-weight: 900;
-    min-width: 36px;
-    text-align: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3em;
+    flex-shrink: 0;
 }
-.al-rank-icon { font-size: 1.6em; flex-shrink: 0; }
+.al-rank-icon { font-size: 2em; flex-shrink: 0; }
 .al-rank-info { flex: 1; min-width: 0; }
-.al-rank-name { font-family: 'Cinzel', serif; font-size: 1em; font-weight: 700; }
-.al-rank-avg  { font-size: 0.9em; color: var(--gold); font-weight: 700; margin-top: 4px; }
-.al-rank-pts-block { text-align: right; }
-.al-rank-pts  { font-family: 'Cinzel', serif; font-size: 1.7em; font-weight: 900; line-height: 1.1; }
-.al-rank-pts-avg { font-size: 0.72em; color: var(--text-muted); font-weight: 600; margin-top: 3px; letter-spacing: 0.02em; }
-.al-rank-pts-avg strong { color: var(--gold); }
+.al-rank-name { font-family: 'Cinzel', serif; font-size: 1.15em; font-weight: 700; }
+.al-rank-members { font-size: 0.82em; color: var(--text-muted); margin-top: 5px; line-height: 1.4; }
+.al-rank-pts-block { text-align: right; flex-shrink: 0; }
+.al-rank-pts  { font-family: 'Cinzel', serif; font-size: 2.6em; font-weight: 900; color: #ffffff; line-height: 1; }
+.al-rank-media-label { font-size: 0.68em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+.al-rank-media-val { font-family: 'Cinzel', serif; font-size: 1.1em; font-weight: 700; color: var(--gold); }
 
 /* ── MEDIA QUERIES ── */
 @media (min-width: 480px) {
