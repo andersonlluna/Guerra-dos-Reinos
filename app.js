@@ -107,7 +107,7 @@ const TITLES = {
         { min: 10, title: '⚡ Portador da Espada de Fogo' },
         { min: 7,  title: '💎 Portador da Garra Longa' },
         { min: 5,  title: '🌟 Cavaleiro do Amanhecer' },
-        { min: 3,  title: '⚔️ Empunhador de Anduril' },
+        { min: 3,  title: '⚔️ Empunhador de Andúril' },
         { min: 1,  title: '🔥 Portador da Ferroada' },
     ],
     recuperacao: [
@@ -322,6 +322,11 @@ function renderRanking(data) {
         const rodadas  = BATTLES.length || 1;
         const avgCartola = (lord.cartolaPoints / rodadas).toFixed(1);
 
+        const alData = ALLIANCES[lord.alliance];
+        const alBadge = alData
+            ? `<div class="lord-alliance-badge" style="border-color:${alData.color};color:${alData.color}">${alData.icon} ${alData.label}</div>`
+            : '';
+
         return `
         <div class="lord-card expandable"
              style="border-color:${lord.color}"
@@ -338,18 +343,28 @@ function renderRanking(data) {
                 <div class="lord-info">
                     <div class="lord-name">${lord.name}</div>
                     <div class="lord-house" style="color:${lord.color}">${lord.house}</div>
-                    <div class="lord-title">${lord.currentTitle}</div>
+                    ${alBadge}
+                    <div class="lord-title">⚔️ ${lord.currentTitle}</div>
                 </div>
             </div>
             <div class="points-display" aria-label="Total: ${lord.totalPoints.toFixed(2)} pontos">
                 <div class="total-points">${lord.totalPoints.toFixed(2)}</div>
                 <div class="pts-label-main">Pontos Gerais</div>
                 <div class="points-breakdown">
-                    <span class="pts-cartola" title="Cartola">📊 ${lord.cartolaPoints.toFixed(2)}</span>
-                    <span class="pts-sep">·</span>
-                    <span class="${medClass}" title="Medieval">⚔️ ${medSign}${lord.medievalPoints}</span>
-                    <span class="pts-sep">·</span>
-                    <span class="pts-avg-val" title="Média Cartola">📈 ${avgCartola}/rod</span>
+                    <div class="pts-col">
+                        <div class="pts-col-label">Cartola</div>
+                        <div class="pts-col-val pts-cartola">${lord.cartolaPoints.toFixed(2)}</div>
+                    </div>
+                    <div class="pts-col-sep"></div>
+                    <div class="pts-col">
+                        <div class="pts-col-label">Medieval</div>
+                        <div class="pts-col-val ${medClass}">${medSign}${lord.medievalPoints}</div>
+                    </div>
+                    <div class="pts-col-sep"></div>
+                    <div class="pts-col">
+                        <div class="pts-col-label">Média</div>
+                        <div class="pts-col-val pts-avg-val">${avgCartola}</div>
+                    </div>
                 </div>
             </div>
             <div class="lord-details" id="details-${lord.id}" role="region" aria-label="Detalhes de ${lord.name}">
@@ -413,6 +428,7 @@ function renderBattles(data) {
 
     el.innerHTML = BATTLES.map(battle => {
         const sorted = [...battle.results].sort((a, b) => b.points - a.points);
+        if (!sorted.length) return '';
         const winner = lordById.get(sorted[0].lordId);
 
         return `
@@ -439,7 +455,8 @@ function renderBattles(data) {
                     else if (r.points >= 100) badges.push('💥+100');
                     else if (r.points >= 90)  badges.push('⚡+90');
                     else if (r.points >= 80)  badges.push('💀+80');
-                    if (idx < 3) badges.push('🥇');
+                    if (idx === 1) badges.push('🥈');
+                    else if (idx === 2) badges.push('🥉');
                     if (isLast && r.points > 0) badges.push('🔦');
 
                     return `
@@ -791,11 +808,12 @@ function renderAliancas(data) {
             <div class="al-rank-icon" aria-hidden="true">${al.icon}</div>
             <div class="al-rank-info">
                 <div class="al-rank-name" style="color:${al.color}">${al.label}</div>
-                <div class="al-rank-avg">${al.memberData.length} membro${al.memberData.length !== 1 ? 's' : ''}</div>
+                <div class="al-rank-members">${al.members}</div>
             </div>
             <div class="al-rank-pts-block">
-                <div class="al-rank-pts" style="color:${al.color}">${al.pts.toFixed(0)}</div>
-                <div class="al-rank-pts-avg">média <strong>${al.avg.toFixed(1)}</strong></div>
+                <div class="al-rank-pts">${al.pts.toFixed(0)}</div>
+                <div class="al-rank-media-label">Média</div>
+                <div class="al-rank-media-val">${al.avg.toFixed(1)}</div>
             </div>
         </div>`).join('')}
     </div>`;
