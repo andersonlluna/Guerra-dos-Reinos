@@ -177,17 +177,55 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px;
-    font-size: 0.88em;
-    font-weight: 600;
-    margin-top: 2px;
+    gap: 0;
+    margin-top: 8px;
+    width: 100%;
 }
 .pts-sep { color: var(--text-muted); font-weight: 300; }
 .pts-cartola { color: #4CAF50; }
 .pts-medieval-pos { color: var(--gold); }
 .pts-medieval-neg { color: #e74c3c; }
 .pts-avg-val { color: #7ec8e3; }
+
+/* Alliance badge no card de ranking */
+.lord-alliance-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.82em;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid;
+    background: rgba(255,255,255,0.05);
+    margin: 4px 0;
+    width: fit-content;
+}
+
+/* Points breakdown — 3 colunas */
+.pts-col {
+    flex: 1;
+    text-align: center;
+}
+.pts-col-label {
+    font-size: 0.68em;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+.pts-col-val {
+    font-family: 'Cinzel', serif;
+    font-size: 1.05em;
+    font-weight: 700;
+}
+.pts-col-sep {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+    margin: 0 8px;
+}
 
 /* STATS GRID */
 .stats-grid {

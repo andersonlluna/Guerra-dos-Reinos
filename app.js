@@ -322,6 +322,11 @@ function renderRanking(data) {
         const rodadas  = BATTLES.length || 1;
         const avgCartola = (lord.cartolaPoints / rodadas).toFixed(1);
 
+        const alData = ALLIANCES[lord.alliance];
+        const alBadge = alData
+            ? `<div class="lord-alliance-badge" style="border-color:${alData.color};color:${alData.color}">${alData.icon} ${alData.label}</div>`
+            : '';
+
         return `
         <div class="lord-card expandable"
              style="border-color:${lord.color}"
@@ -338,18 +343,28 @@ function renderRanking(data) {
                 <div class="lord-info">
                     <div class="lord-name">${lord.name}</div>
                     <div class="lord-house" style="color:${lord.color}">${lord.house}</div>
-                    <div class="lord-title">${lord.currentTitle}</div>
+                    ${alBadge}
+                    <div class="lord-title">⚔️ ${lord.currentTitle}</div>
                 </div>
             </div>
             <div class="points-display" aria-label="Total: ${lord.totalPoints.toFixed(2)} pontos">
                 <div class="total-points">${lord.totalPoints.toFixed(2)}</div>
                 <div class="pts-label-main">Pontos Gerais</div>
                 <div class="points-breakdown">
-                    <span class="pts-cartola" title="Cartola">📊 ${lord.cartolaPoints.toFixed(2)}</span>
-                    <span class="pts-sep">·</span>
-                    <span class="${medClass}" title="Medieval">⚔️ ${medSign}${lord.medievalPoints}</span>
-                    <span class="pts-sep">·</span>
-                    <span class="pts-avg-val" title="Média Cartola">📈 ${avgCartola}/rod</span>
+                    <div class="pts-col">
+                        <div class="pts-col-label">Cartola</div>
+                        <div class="pts-col-val pts-cartola">${lord.cartolaPoints.toFixed(2)}</div>
+                    </div>
+                    <div class="pts-col-sep"></div>
+                    <div class="pts-col">
+                        <div class="pts-col-label">Medieval</div>
+                        <div class="pts-col-val ${medClass}">${medSign}${lord.medievalPoints}</div>
+                    </div>
+                    <div class="pts-col-sep"></div>
+                    <div class="pts-col">
+                        <div class="pts-col-label">Média</div>
+                        <div class="pts-col-val pts-avg-val">${avgCartola}</div>
+                    </div>
                 </div>
             </div>
             <div class="lord-details" id="details-${lord.id}" role="region" aria-label="Detalhes de ${lord.name}">
