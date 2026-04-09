@@ -562,14 +562,16 @@ function renderAchievements(data) {
                     <div class="stat-subtitle stat-subtitle-massacre">${getTitle('massacre', lord.massacre)}</div>
                 </div>` : ''}
                 ${lord.podio > 0 ? `
-                <div class="stat-item">
+                <div class="stat-item stat-item-podio">
                     <div class="stat-label">🥇 Pódio</div>
                     <div class="stat-value">${lord.podio}x</div>
+                    <div class="stat-subtitle stat-subtitle-podio">${getTitle('podio', lord.podio)}</div>
                 </div>` : ''}
                 ${lord.lanterna > 0 ? `
-                <div class="stat-item">
+                <div class="stat-item stat-item-lanterna">
                     <div class="stat-label">🔦 Lanterna</div>
                     <div class="stat-value negative">${lord.lanterna}x</div>
+                    <div class="stat-subtitle stat-subtitle-lanterna">${getTitle('lanterna', lord.lanterna)}</div>
                 </div>` : ''}
             </div>
         </div>`).join('');

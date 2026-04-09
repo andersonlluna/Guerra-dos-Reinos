@@ -261,6 +261,8 @@ body {
 .stat-subtitle-mitada   { color: #e74c3c; }
 .stat-subtitle-recup    { color: #3498db; }
 .stat-subtitle-massacre { color: #9b59b6; }
+.stat-subtitle-podio    { color: #2ecc71; }
+.stat-subtitle-lanterna { color: #e67e22; }
 
 /* EXPAND */
 .lord-details { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); }
